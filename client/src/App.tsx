@@ -1,41 +1,28 @@
-import { useSelector } from "react-redux";
-import "./App.css";
 import { useDispatch } from "react-redux";
 import { getDoorQuery } from "./store/actions/doorsActions";
+import Navigation from "./components/Navigation/navigation";
+import Flats from "./components/Flats/flats";
+import Map from "./components/Map/map";
+import Filter from "./components/Filter/filter";
+import classes from "./App.module.scss";
 function App() {
   const dispatch = useDispatch();
 
-  const fakeData: any = {
-    doorID: "Lg18299RHS10MxSh",
-    i1: "1",
-    i2: "1",
-    i3: "1",
-    i4: "1",
-    i5: "1",
-    i6: "1",
-    i7: "1",
-    i8: "1",
-    i9: "1",
-    n1: "1",
-    n2: "1",
-    n3: "1",
-    o1: "0",
-    o2: "1",
-    o3: "1",
-    e: "0",
-    doorUrl:
-      "?t=A3%nm*Wb&id=Lg18299RHS10MxSh&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=1&n2=1&n3=1&o1=1&o2=0&o3=0&e=0",
-  };
-
-  const testAction = () => {
-    dispatch(getDoorQuery(fakeData));
+  const testAction = (arg: string) => {
+    dispatch(getDoorQuery(arg));
   };
 
   return (
-    <div className="App">
+    <div className={classes.App}>
+      <Navigation />
+      <Filter />
+      <div className={classes.contentBox}>
+        <Flats />
+        <Map />
+      </div>
       <h1>Hello there</h1>
-      <button onClick={() => testAction()}>Front Door</button>
-      <button>Flat Door</button>
+      <button onClick={() => testAction("o1")}>Front Door</button>
+      <button onClick={() => testAction("o2")}>Flat Door</button>
     </div>
   );
 }

@@ -1,0 +1,43 @@
+@import "../../styles/global.scss";
+
+.Navigation {
+  background-color: $white;
+  border-bottom: 1px solid #cacaca;
+
+  .NavigationWrapper {
+    width: 80%;
+    align-items: center;
+    margin: 0 auto;
+    display: flex;
+    .Logo {
+      width: 13%;
+      img {
+        width: 20%;
+      }
+    }
+    .Routes {
+      width: 40%;
+      ul {
+        display: flex;
+        li {
+          a {
+            text-decoration: none;
+            color: $blackGrey;
+            font-size: 25px;
+            &:hover {
+              color: $lightBlue;
+            }
+          }
+          margin-right: 5%;
+        }
+      }
+    }
+    .Profile {
+      width: 35%;
+      text-align: right;
+      img {
+        margin-right: 0.5vw;
+      }
+    }
+  }
+}

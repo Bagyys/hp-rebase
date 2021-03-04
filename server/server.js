@@ -64,12 +64,14 @@ app.use(
 //   );
 // });
 
-app.get("/posts", (req, res) => {
-  res.send("We are on posts");
-});
+// app.get("/posts", (req, res) => {
+//   res.send("We are on posts");
+// });
 
-const allDoorsQueries = require("./routes/getDoorQuery");
+const allDoors = require("./routes/doorRoutes");
+const allFlats = require("./routes/flatRoutes");
 
-app.use("/", allDoorsQueries);
+app.use("/", allDoors);
+app.use("/flat/", allFlats);
 
 app.listen(9000);

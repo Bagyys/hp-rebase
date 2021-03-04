@@ -1,0 +1,12 @@
+@import "./styles/global.scss";
+
+.App {
+  background-color: $lightGrey;
+  height: 100vh;
+  h1 {
+    font-size: 35px;
+  }
+  .contentBox {
+    display: flex;
+  }
+}

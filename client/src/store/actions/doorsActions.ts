@@ -10,37 +10,14 @@ export type Actions = GetQuery;
 
 const devUrl = "http://localhost:9000";
 const prodUrl = "http://18.195.50.192:9000";
-export const getDoorQuery = (fakeData: any) => async (dispatch: Dispatch) => {
-  console.log(fakeData.o1, "o1 actione");
+export const getDoorQuery = (arg: string) => async (dispatch: Dispatch) => {
   try {
     const responseData: any = await axios.put(
-      `${prodUrl}/door/${fakeData.doorUrl}`,
-      {
-        params: {
-          t: "A3%nm*Wb",
-          doorID: fakeData.doorID,
-          i1: fakeData.i1,
-          i2: fakeData.i2,
-          i3: fakeData.i3,
-          i4: fakeData.i4,
-          i5: fakeData.i5,
-          i6: fakeData.i6,
-          i7: fakeData.i7,
-          i8: "1",
-          i9: "1",
-          n1: "1",
-          n2: "1",
-          n3: "1",
-          o1: fakeData.o1,
-          o2: "1",
-          o3: "1",
-          e: "0",
-        },
-      }
+      `${prodUrl}/doorSwitch/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&${arg}=1`
     );
     dispatch({
       type: doorTypes.INIT_DOORS,
-      payload: responseData.data,
+      payload: responseData.data.door,
     });
   } catch (err) {
     console.log("Erroras");

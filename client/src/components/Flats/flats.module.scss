@@ -1,0 +1,18 @@
+@import "../../styles/global.scss";
+
+.Flats {
+  width: 50%;
+  text-align: center;
+  ul {
+    .flat {
+      width: 30%;
+      margin: 0 auto;
+      background-color: $white;
+      margin-bottom: 0.5rem;
+      padding: 1rem;
+      background-clip: border-box;
+      border: 0 solid rgba(0, 0, 0, 0.125);
+      border-radius: 5px;
+    }
+  }
+}

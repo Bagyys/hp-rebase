@@ -1,0 +1,61 @@
+@import "../../styles/global.scss";
+.Filter {
+  padding: 1.5rem;
+  border-bottom: 1px solid #cacaca;
+  .FilterWrapper {
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    .input {
+      position: relative;
+      input {
+        color: #4c4c4c;
+        border: 1px solid #ccc;
+        padding: 6px 30px 7px 10px;
+      }
+
+      img {
+        position: absolute;
+        top: 25%;
+        right: 5%;
+      }
+    }
+
+    .optionButtons {
+      display: flex;
+      div {
+        display: flex;
+        align-items: center;
+        h2 {
+          font-size: $mediumFontSize;
+          margin-right: 1rem;
+        }
+      }
+      #Price {
+        background-color: $lightBlue;
+        color: $white;
+        option {
+          background-color: $lightBlue;
+          color: $white;
+        }
+      }
+
+      #Rooms {
+        background-color: $lightGreen;
+        color: $white;
+        option {
+          background-color: $lightGreen;
+          color: $white;
+        }
+      }
+      #Beds {
+        background-color: $red;
+        color: $white;
+        option {
+          background-color: $red;
+          color: $white;
+        }
+      }
+    }
+  }
+}
