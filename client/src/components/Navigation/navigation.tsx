@@ -9,9 +9,7 @@ function Navigation() {
       <div className={classes.NavigationWrapper}>
         <div className={classes.Logo}>
           <h1>
-            <a href="/">
-              <img src={LogoImg} alt="HappyStayLogo" />
-            </a>
+            <a href="/">Logo</a>
           </h1>
         </div>
 
@@ -31,14 +29,6 @@ function Navigation() {
                 <Link to="/settings">Settings</Link>
               </li>
             </ul>
-            {/* <Switch>
-            <Route path="/reservation">
-              <div>Reservation</div>
-            </Route>
-            <Route path="/favorites">
-              <div>Favorites</div>
-            </Route>
-          </Switch> */}
           </Router>
         </div>
 

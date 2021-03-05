@@ -1,29 +1,22 @@
-import { useDispatch } from "react-redux";
-import { getDoorQuery } from "./store/actions/doorsActions";
-import Navigation from "./components/Navigation/navigation";
-import Flats from "./components/Flats/flats";
-import Map from "./components/Map/map";
+import Home from "./routes/home";
+import React from "react";
+import FlatReview from "./routes/FlatReview/FlatView";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Filter from "./components/Filter/filter";
-import classes from "./App.module.scss";
+import Navigation from "./components/Navigation/navigation";
+
 function App() {
-  const dispatch = useDispatch();
-
-  const testAction = (arg: string) => {
-    dispatch(getDoorQuery(arg));
-  };
-
   return (
-    <div className={classes.App}>
-      <Navigation />
-      <Filter />
-      <div className={classes.contentBox}>
-        <Flats />
-        <Map />
+    <Router>
+      <div>
+        <Navigation />
+        <Filter />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/flat/:id" component={FlatReview} />
+        </Switch>
       </div>
-      <h1>Hello there</h1>
-      <button onClick={() => testAction("o1")}>Front Door</button>
-      <button onClick={() => testAction("o2")}>Flat Door</button>
-    </div>
+    </Router>
   );
 }
 

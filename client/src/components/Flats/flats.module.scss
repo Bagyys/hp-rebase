@@ -3,16 +3,81 @@
 .Flats {
   width: 50%;
   text-align: center;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    background: #f1f1f1;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  h1 {
+    margin-bottom: 3rem;
+  }
   ul {
+    li:nth-child(2n) {
+      background: $lightGreen;
+    }
+    li:nth-child(3n) {
+      background: $orange;
+    }
     .flat {
-      width: 30%;
-      margin: 0 auto;
+      width: 80%;
+
       background-color: $white;
-      margin-bottom: 0.5rem;
-      padding: 1rem;
+      margin-bottom: 2rem;
+      color: $white;
       background-clip: border-box;
       border: 0 solid rgba(0, 0, 0, 0.125);
       border-radius: 5px;
+      background-color: $lightBlue;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 10%);
+      position: relative;
+      .NEW {
+        position: absolute;
+        top: 5%;
+        right: 5%;
+        background-color: $red;
+        padding: 1.5rem;
+        font-size: 1.7rem;
+        border-radius: 5px;
+      }
+      img {
+        width: 100%;
+        height: 333px;
+      }
+
+      .aboutFlat {
+        padding: 1rem;
+        text-align: justify;
+        h1 {
+          margin-bottom: 4%;
+        }
+        p {
+          font-size: 1.6rem;
+        }
+      }
+
+      .SpecInfo {
+        padding: 2rem;
+        color: $white;
+        display: flex;
+        font-size: 3rem;
+        justify-content: space-around;
+      }
+
+      button {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 10%);
+        border: none;
+        padding: 2rem;
+        margin: 2rem;
+        border-radius: 8%;
+        cursor: pointer;
+      }
     }
   }
 }
