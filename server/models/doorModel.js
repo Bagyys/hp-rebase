@@ -56,12 +56,20 @@ const doorSchema = new Schema({
       default: 0,
     },
     o1: {
-      type: Number,
-      default: 0,
+      value: {
+        type: Number,
+      },
+      open: {
+        type: Boolean,
+      },
     },
     o2: {
-      type: Number,
-      default: 0,
+      value: {
+        type: Number,
+      },
+      open: {
+        type: Boolean,
+      },
     },
     o3: {
       type: Number,
