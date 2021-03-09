@@ -15,68 +15,147 @@
     box-shadow: inset 0 0 5px grey;
     border-radius: 10px;
   }
-  h1 {
-    margin-bottom: 3rem;
-  }
-  ul {
-    li:nth-child(2n) {
-      background: $lightGreen;
-    }
-    li:nth-child(3n) {
-      background: $orange;
-    }
-    .flat {
-      width: 80%;
 
+  ul {
+    .flat {
+      width: 100%;
       background-color: $white;
       margin-bottom: 2rem;
-      color: $white;
       background-clip: border-box;
       border: 0 solid rgba(0, 0, 0, 0.125);
       border-radius: 5px;
-      background-color: $lightBlue;
+      background-color: $white;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 10%);
-      position: relative;
-      .NEW {
-        position: absolute;
-        top: 5%;
-        right: 5%;
-        background-color: $red;
-        padding: 1.5rem;
-        font-size: 1.7rem;
-        border-radius: 5px;
-      }
-      img {
-        width: 100%;
-        height: 333px;
-      }
 
       .aboutFlat {
+        border-bottom: 2px solid #dfdfdf;
         padding: 1rem;
         text-align: justify;
+        font-family: $workSans;
+
         h1 {
-          margin-bottom: 4%;
+          margin-bottom: 2%;
+          color: $black;
+          font-size: 2.5rem;
+          line-height: 2.125rem;
         }
         p {
-          font-size: 1.6rem;
+          font-size: $smallFontSize;
+          color: $blackGrey;
+          line-height: $textLineHeight;
         }
       }
 
-      .SpecInfo {
-        padding: 2rem;
-        color: $white;
+      .flatContent {
         display: flex;
-        font-size: 3rem;
-        justify-content: space-around;
-      }
+        padding: 1rem;
 
-      button {
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 10%);
-        border: none;
-        padding: 2rem;
-        margin: 2rem;
-        border-radius: 8%;
-        cursor: pointer;
+        .rightSide {
+          width: 50%;
+          padding: 0 2rem;
+          position: relative;
+          .SpecInfo {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            font-size: $mediumFontSize;
+            color: $black2;
+            font-family: $workSans;
+            justify-content: flex-end;
+
+            .Phone {
+              align-items: center;
+              display: flex;
+              text-decoration: none;
+              color: $black2;
+              img {
+                width: 16px;
+              }
+            }
+
+            h2 {
+              margin-bottom: 2rem;
+            }
+            button {
+              background: $lightGreen;
+              border: none;
+              padding: 1rem 0;
+              border-radius: 6px;
+              position: absolute;
+              bottom: 0;
+              width: 95%;
+              a {
+                color: $white;
+                text-decoration: none;
+                font-size: $smallFontSize;
+                font-family: $workSans;
+                font-weight: 700;
+              }
+            }
+          }
+          .top {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5%;
+            justify-content: space-between;
+            .NEW {
+              width: 50%;
+              font-size: 1.7rem;
+              border-radius: 5px;
+              display: flex;
+              align-items: center;
+              img {
+                background-color: $lightBlue;
+                padding: 0.3rem;
+                border-radius: 5px;
+                margin-right: 0.6rem;
+              }
+            }
+
+            P {
+              align-items: center;
+              color: $veryLightBlue;
+            }
+          }
+        }
+
+        .flatImg {
+          width: 50%;
+          position: relative;
+          .MainImage {
+            border-radius: 2%;
+            width: 100%;
+            height: 265px;
+          }
+          .arrowLeft {
+            padding: 1rem 0.7rem;
+            border-radius: 0 5px 5px 0;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.4);
+            border: none;
+            top: 42%;
+            left: 0;
+            cursor: pointer;
+            img {
+              cursor: pointer;
+              width: 24px;
+            }
+          }
+          .arrowRight {
+            padding: 1rem 0.7rem;
+            border-radius: 5px 0 0 5px;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.4);
+            border: none;
+            top: 40%;
+            right: 0;
+            cursor: pointer;
+            img {
+              cursor: pointer;
+              width: 24px;
+            }
+          }
+        }
       }
     }
   }

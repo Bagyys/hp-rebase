@@ -3,7 +3,7 @@
   padding: 1.5rem;
   border-bottom: 1px solid #cacaca;
   .FilterWrapper {
-    width: 80%;
+    width: 100%;
     display: flex;
     margin: 0 auto;
     .input {
@@ -12,8 +12,11 @@
       input {
         color: #4c4c4c;
         border: 1px solid #ccc;
-        padding: 8px 45px 9px 12px;
+        padding: 8px 250px 9px 10px;
         border-radius: 5px;
+        &::placeholder {
+          text-align: left;
+        }
       }
 
       img {

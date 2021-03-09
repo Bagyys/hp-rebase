@@ -394,3 +394,12 @@
 ::1 - - [08/Mar/2021:13:04:49 +0000] "PUT /doorSwitch1/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&o1=12&open=1 HTTP/1.1" 404 8
 ::1 - - [08/Mar/2021:13:05:11 +0000] "PUT /doorSwitch1/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&o1=12&open=1 HTTP/1.1" 404 3
 ::1 - - [08/Mar/2021:13:05:22 +0000] "PUT /doorSwitch1/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&o1=1&open=1 HTTP/1.1" 200 108
+::1 - - [09/Mar/2021:06:15:16 +0000] "PUT /frontDoors/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&o1=1 HTTP/1.1" 404 150
+::1 - - [09/Mar/2021:06:31:34 +0000] "PUT /frontDoors/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&o1=1 HTTP/1.1" 404 150
+::1 - - [09/Mar/2021:06:32:11 +0000] "PUT /doorSwitch1/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&n2=1 HTTP/1.1" 404 3
+::1 - - [09/Mar/2021:06:34:01 +0000] "PUT /doorSwitch1/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&n2=1 HTTP/1.1" 404 3
+::1 - - [09/Mar/2021:06:34:28 +0000] "PUT /doorSwitch1/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&n2=1 HTTP/1.1" 404 3
+::1 - - [09/Mar/2021:06:35:05 +0000] "PUT /doorSwitch1/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&n2=1 HTTP/1.1" 404 3
+::1 - - [09/Mar/2021:06:50:48 +0000] "PUT /doorSwitch1/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&n2=1 HTTP/1.1" 404 3
+::1 - - [09/Mar/2021:06:54:18 +0000] "PUT /doorSwitch1/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&n2=1 HTTP/1.1" 404 3
+::1 - - [09/Mar/2021:06:55:18 +0000] "PUT /doorSwitch1/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&n2=1 HTTP/1.1" 404 3

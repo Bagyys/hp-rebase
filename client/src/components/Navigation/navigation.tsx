@@ -8,9 +8,9 @@ function Navigation() {
     <div className={classes.Navigation}>
       <div className={classes.NavigationWrapper}>
         <div className={classes.Logo}>
-          <h1>
-            <a href="/">Logo</a>
-          </h1>
+          <a href="/">
+            <img src="./Logo.png" alt="Logo" />
+          </a>
         </div>
 
         <div className={classes.Routes}>
@@ -33,7 +33,9 @@ function Navigation() {
         </div>
 
         <div className={classes.Profile}>
-          <img src={NotificationImg} alt="Notification Bell" />
+          <div className={classes.bell}>
+            <img src={NotificationImg} alt="Notification Bell" />
+          </div>
           <img src={ProfileImg} alt="Profile Picture" />
         </div>
       </div>

@@ -11,9 +11,6 @@
     display: flex;
     .Logo {
       width: 13%;
-      img {
-        width: 20%;
-      }
     }
     .Routes {
       width: 40%;
@@ -21,9 +18,11 @@
         display: flex;
         li {
           a {
+            font-family: Work Sans, sans-serif;
             text-decoration: none;
             color: $blackGrey;
-            font-size: 25px;
+            font-size: $mediumFontSize;
+            line-height: $navLineHeight;
             &:hover {
               color: $lightBlue;
             }
@@ -33,10 +32,27 @@
       }
     }
     .Profile {
-      width: 35%;
-      text-align: right;
+      width: 50%;
+      justify-content: flex-end;
+      display: flex;
+      align-items: center;
+
+      .bell {
+        border-radius: 50%;
+        padding: 0.5rem;
+        margin-right: 1rem;
+        &:hover {
+          background: $grey;
+        }
+        img {
+          width: 24px;
+          margin: 0 auto;
+        }
+      }
       img {
-        margin-right: 0.5vw;
+        border-radius: 50%;
+        width: 35px;
+        cursor: pointer;
       }
     }
   }

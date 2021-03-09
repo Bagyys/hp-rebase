@@ -1,5 +1,5 @@
 const { Door } = require("../models/doorModel");
-
+let debug = require("debug");
 exports.getDoor = async (req, res) => {
   const data = req.query;
   const doorID = req.query.id;

@@ -1,10 +1,9 @@
 import { useDispatch } from "react-redux";
 import { frontDoors, flatDoors } from "../../store/actions/doorsActions";
-
 import Flats from "../../components/Flats/flats";
 import Map from "../../components/Map/map";
-
 import classes from "../../App.module.scss";
+
 function Home() {
   const dispatch = useDispatch();
 
