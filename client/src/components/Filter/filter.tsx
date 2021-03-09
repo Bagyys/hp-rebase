@@ -1,6 +1,22 @@
 import classes from "./filter.module.scss";
 import LoupeImg from "../../assets/images/loupe.png";
 function Filter() {
+  function myFunction() {
+    (document.getElementById("myDropdown") as any).classList.toggle("show");
+  }
+
+  window.onclick = function (event: any) {
+    if (!event.target.matches(".dropbtn")) {
+      var dropdowns = document.getElementsByClassName("dropdownContent");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains("show")) {
+          openDropdown.classList.remove("show");
+        }
+      }
+    }
+  };
   return (
     <div className={classes.Filter}>
       <div className={classes.FilterWrapper}>
@@ -10,6 +26,16 @@ function Filter() {
         </div>
         <div className={classes.optionButtons}>
           <div>
+            <div className={classes.dropdown}>
+              <button onClick={() => myFunction()} className={classes.dropbtn}>
+                Dropdown
+              </button>
+              <div id="myDropdown" className={classes.dropdownContent}>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+              </div>
+            </div>
             <h2>Price</h2>
             <select name="" id={classes.Price}>
               <option>All prices</option>
