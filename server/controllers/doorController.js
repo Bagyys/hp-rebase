@@ -205,7 +205,7 @@ exports.getDoor2 = async (req, res) => {
     if (data.o1 === "0" && data.o2 === "0" && data.n2 === "0") {
       //tikriname DB o1 ir 02
       // jei o1 ir o2 lygus 0
-      if (dataInDb.door.o1 === 0 && dataInDb.door.o2 === 0) {
+      if (dataInDb.door.o1 == 0 && dataInDb.door.o2 == 0) {
         let i1 = dataInDb.door.i1;
         let i2 = dataInDb.door.i2;
         let i3 = dataInDb.door.i3;
@@ -215,13 +215,13 @@ exports.getDoor2 = async (req, res) => {
         let i7 = dataInDb.door.i7;
         let i8 = dataInDb.door.i8;
         let i9 = dataInDb.door.i9;
-        let n1 = data.door.n1;
-        let n2 = data.door.n2;
-        let n3 = data.door.n3;
+        let n1 = data.n1;
+        let n2 = data.n2;
+        let n3 = data.n3;
         let o1 = dataInDb.door.o1;
         let o2 = dataInDb.door.o2;
         let o3 = dataInDb.door.o3;
-        let e = data.door.e;
+        let e = data.e;
 
         // URL EXAMPLE
         // A3%nm*Wb_ID=Lg18299RHS10MxSh_&i1=1_&i2=1_&i3=1_&i4=1_&i5=1_&i6=1_&i7=1_&i8=1_&i9=1_&n1=1_&n2=1_&n3=1_&o1=0_&o2=0_&o3=0_&e=0
