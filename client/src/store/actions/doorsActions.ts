@@ -13,7 +13,7 @@ const prodUrl = "http://18.195.50.192:9000";
 export const getDoorQuery = (arg: string) => async (dispatch: Dispatch) => {
   try {
     const responseData: any = await axios.put(
-      `${devUrl}/doorSwitch/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&${arg}=1`
+      `${devUrl}/doorSwitch1/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&${arg}=1`
     );
     dispatch({
       type: doorTypes.INIT_DOORS,
