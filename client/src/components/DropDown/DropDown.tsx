@@ -1,16 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import classes from "./DropDown.module.scss";
 import arrow from "../../assets/images/arrowDown.png";
-
 export interface DropDownInterface {
   title: string;
-  items: any;
+  items?: any;
   type: string;
+  customComponent?: JSX.Element;
 }
 
-function DropDown({ title, items, type }: DropDownInterface) {
-  const [open, setOpen] = useState<boolean>(false);
+interface itemInterface {
+  id: number;
+  value: string;
+}
 
+function DropDown({ title, items, type, customComponent }: DropDownInterface) {
+  const [open, setOpen] = useState<boolean>(false);
   const toggle = (value: boolean) => {
     setOpen(value);
   };
@@ -21,7 +25,7 @@ function DropDown({ title, items, type }: DropDownInterface) {
   let menuRef: any = useRef();
 
   useEffect(() => {
-    let handler = (event: any) => {
+    let handler = (event: Event) => {
       if (!menuRef.current.contains(event.target)) {
         setOpen(false);
       }
@@ -39,8 +43,8 @@ function DropDown({ title, items, type }: DropDownInterface) {
         tabIndex={0}
         className={classes.ddHeader}
         role="button"
-        onKeyPress={(e) => toggle(!open)}
-        onClick={(e) => toggle(!open)}
+        onKeyPress={() => toggle(!open)}
+        onClick={() => toggle(!open)}
       >
         <div className={classes.ddHeaderTitle}>
           <p>{title}</p>
@@ -48,16 +52,16 @@ function DropDown({ title, items, type }: DropDownInterface) {
         <div className={classes.ddHeaderAction}>
           <p>
             {open ? (
-              <img className={classes.ArrowClose} src={arrow} />
+              <img className={classes.ArrowClose} src={arrow} alt="Close" />
             ) : (
-              <img className={classes.ArrowOpen} src={arrow} />
+              <img className={classes.ArrowOpen} src={arrow} alt="Open" />
             )}
           </p>
         </div>
       </div>
       {open && (
         <ul className={classes.ddList}>
-          {type != "list" ? (
+          {type !== "list" && type !== "calendar" && type !== "custom" ? (
             <div className={classes.inputs}>
               <input
                 type="tel"
@@ -82,23 +86,34 @@ function DropDown({ title, items, type }: DropDownInterface) {
               </li>
             ) : null}
 
-            {items.map((item: any) => {
-              if (type === "mixed") {
-                return (
-                  <li key={item.id}>
-                    <span>{item.value}€</span>
-                  </li>
-                );
-              } else if (type === "list") {
-                return (
-                  <li className={classes.ddItem} key={item.id}>
-                    <span>{item.value}(Totals)</span>
-                  </li>
-                );
-              } else {
-                return null;
-              }
-            })}
+            {type !== "calendar" && type !== "custom" ? (
+              items.map((item: itemInterface) => {
+                if (type === "mixed") {
+                  return (
+                    <li key={item.id}>
+                      <span>{item.value}€</span>
+                    </li>
+                  );
+                } else if (type === "list") {
+                  return (
+                    <li className={classes.ddItem} key={item.id}>
+                      <input type="checkbox" name="checkBox" />
+                      <label htmlFor="checkBox">{item.value}(Totals)</label>
+                    </li>
+                  );
+                } else {
+                  return null;
+                }
+              })
+            ) : (
+              <div>
+                {type === "calendar" ? (
+                  <input type="date" />
+                ) : (
+                  <div>{customComponent}</div>
+                )}
+              </div>
+            )}
           </div>
         </ul>
       )}
