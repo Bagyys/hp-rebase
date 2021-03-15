@@ -1,5 +1,5 @@
 import doorTypes from "../types/doorTypes";
-
+// import Actions from "../actions/doorsActions";
 export interface InitialState {
   Nothing: Array<String>;
 }

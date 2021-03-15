@@ -29,90 +29,9 @@
     .optionButtons {
       display: flex;
 
-      .dropbtn {
-        background-color: #3498db;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-      }
-
-      .dropbtn:hover,
-      .dropbtn:focus {
-        background-color: #2980b9;
-      }
-
-      .dropdown {
-        position: relative;
-        display: inline-block;
-      }
-
-      .dropdownContent {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-        a {
-          color: black;
-          padding: 12px 16px;
-          text-decoration: none;
-          display: block;
-        }
-      }
-
-      .dropdownContent .dropdown a:hover {
-        background-color: #ddd;
-      }
-
-      .show {
-        display: block;
-      }
       div {
         display: flex;
         align-items: center;
-        margin-right: 5%;
-        h2 {
-          font-size: $mediumFontSize;
-          margin-right: 1rem;
-        }
-      }
-      #Price {
-        border: 1px solid #ccc;
-        border-radius: 8%;
-        background-color: $lightBlue;
-        color: $white;
-        padding: 0.5rem 3rem;
-        option {
-          background-color: $lightBlue;
-          color: $white;
-        }
-      }
-
-      #Rooms {
-        border: 1px solid #ccc;
-        border-radius: 8%;
-        background-color: $lightGreen;
-        color: $white;
-        padding: 0.5rem 2rem;
-        option {
-          background-color: $lightGreen;
-          color: $white;
-        }
-      }
-      #Beds {
-        border: 1px solid #ccc;
-        border-radius: 8%;
-        background-color: $red;
-        color: $white;
-        padding: 0.5rem 2rem;
-        option {
-          background-color: $red;
-          color: $white;
-        }
       }
     }
   }
