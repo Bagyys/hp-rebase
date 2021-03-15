@@ -5,6 +5,7 @@ const {
   getDoor2,
   doorSwitch,
   doorSwitch1,
+    reset,
 } = require("../controllers/doorController");
 
 // Landing page route
@@ -14,5 +15,5 @@ router.put("/door2/", getDoor2);
 
 router.put("/doorSwitch/", doorSwitch);
 router.put("/doorSwitch1/", doorSwitch1);
-
+router.put('/doorReset/', reset);
 module.exports = router;
