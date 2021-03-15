@@ -470,3 +470,22 @@ exports.doorSwitch1 = async (req, res) => {
     return res.status(500).json({ error: err.message });
   }
 };
+
+exports.reset = async (req, res) => {
+  const data = req.query;
+  const doorID = req.query.id;
+  console.log(data, 'data');
+  console.log(data.o2, 'data');
+
+  let switchDoor = await Door.findOneAndUpdate(
+    { doorID: doorID },
+    {
+      $set: {
+        'door.o1': 0,
+        'door.o2': 0,
+      },
+    },
+    { new: true }
+  );
+  return res.status(200).send('success');
+};
