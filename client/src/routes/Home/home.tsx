@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { getDoorQuery } from "../../store/actions/doorsActions";
+import { getDoorQuery, resetDoor } from "../../store/actions/doorsActions";
 import Flats from "../../components/Flats/flats";
 import Map from "../../components/Map/map";
 import classes from "../../App.module.scss";
@@ -9,6 +9,9 @@ function Home() {
 
   const testAction = (arg: string) => {
     dispatch(getDoorQuery(arg));
+  };
+  const resetAction = () => {
+    dispatch(resetDoor());
   };
 
   return (
@@ -20,6 +23,8 @@ function Home() {
       <h1>Hello there</h1>
       <button onClick={() => testAction("o1")}>Front Door</button>
       <button onClick={() => testAction("o2")}>Flat Door</button>
+      <button onClick={() => resetAction()}>Reset Door</button>
+
     </div>
   );
 }
