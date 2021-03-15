@@ -13,12 +13,25 @@ const devUrl = "http://localhost:9000";
 export const getDoorQuery = (arg: string) => async (dispatch: Dispatch) => {
   try {
     const responseData: any = await axios.put(
-      `${devUrl}/doorSwitch1/?t=A3%nm*Wb&id=Lg18299RHS10MxSh&${arg}=1`
+      `${devUrl}/doorSwitch1/?h=A3%nm*Wb&id=Lg18299RHS10MxSh&${arg}=1`
     );
     dispatch({
       type: doorTypes.INIT_DOORS,
       payload: responseData.data.door,
     });
+  } catch (err) {
+    console.log("Erroras");
+  }
+};
+export const resetDoor = () => async (dispatch: Dispatch) => {
+  try {
+    const responseData: any = await axios.put(
+      `${devUrl}/reset/`
+    );
+    // dispatch({
+    //   type: doorTypes.INIT_DOORS,
+    //   payload: responseData.data.door,
+    // });
   } catch (err) {
     console.log("Erroras");
   }
