@@ -1,0 +1,11 @@
+const router = require("express").Router();
+const { getDoor, getDoor1, doorSwitch, doorSwitch1 } = require("../controllers/doorController");
+
+// Landing page route
+router.put("/door/", getDoor);
+router.put("/door1/", getDoor1);
+
+router.put("/doorSwitch/", doorSwitch);
+router.put("/doorSwitch1/", doorSwitch1);
+
+module.exports = router;

@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const EquipmentSchema = new Schema({
-  inOutValues: {
+const doorSchema = new Schema({
+  door: {
     i1: {
       type: Number,
       default: 0,
@@ -51,7 +51,34 @@ const EquipmentSchema = new Schema({
       type: Number,
       default: 0,
     },
+    e: {
+      type: Number,
+      default: 0,
+    },
+    o1: {
+      value: {
+        type: Number,
+      },
+      open: {
+        type: Boolean,
+      },
+    },
+    o2: {
+      value: {
+        type: Number,
+      },
+      open: {
+        type: Boolean,
+      },
+    },
+    o3: {
+      type: Number,
+      default: 0,
+    },
   },
 });
 
-module.exports = EquipmentSchema;
+module.exports = {
+  Door: mongoose.model("Door", doorSchema),
+  doorSchema: doorSchema,
+};
