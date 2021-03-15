@@ -1,7 +1,18 @@
 import classes from "./FlatReview.module.scss";
 import Modal from "react-modal";
 import { useState } from "react";
-function FlatView(props: any) {
+import { FlatInterface } from "../../components/Flats/flats";
+import { RouteComponentProps } from "react-router";
+
+interface PropsInterface {
+  location: {
+    state: {
+      flat: FlatInterface;
+    };
+  };
+}
+
+function FlatView(props: PropsInterface) {
   const flat = props.location.state.flat;
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
 

@@ -5,6 +5,22 @@ import phoneImg from "../../assets/images/phone.png";
 import arrowRight from "../../assets/images/arrowRight.png";
 import arrowLeft from "../../assets/images/arrowLeft.png";
 
+export interface FlatInterface {
+  id: number;
+  price: number;
+  rooms: number;
+  beds: number;
+  type: string;
+  title: string;
+  isAvailable: boolean;
+  oneMonthFree: boolean;
+  description: string;
+  mainImage: string;
+  mostRecent: boolean;
+  address: string;
+  phone: string;
+}
+
 function Flats() {
   const boxNew = (
     <div className={classes.NEW}>
@@ -83,7 +99,7 @@ function Flats() {
   return (
     <div className={classes.Flats}>
       <ul>
-        {fictionalFlats.map((flat: any, index) => {
+        {fictionalFlats.map((flat: FlatInterface, index: number) => {
           return (
             <li className={classes.flat} key={index}>
               <div className={classes.aboutFlat}>
@@ -93,7 +109,7 @@ function Flats() {
               <div className={classes.flatContent}>
                 <div className={classes.flatImg}>
                   <button className={classes.arrowLeft}>
-                    <img src={arrowLeft} alt="arrowRight" />
+                    <img src={arrowLeft} alt="arrowRight" /> 
                   </button>
                   <img
                     className={classes.MainImage}
