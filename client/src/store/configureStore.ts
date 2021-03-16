@@ -1,13 +1,13 @@
 import { applyMiddleware, createStore } from "redux";
-import { connectRouter, routerMiddleware } from "connected-react-router";
+// import { connectRouter, routerMiddleware } from "connected-react-router";
 import thunkMiddleware from "redux-thunk";
 import monitorReducerEnhancer from "../enhancers/monitorReducer";
 import loggerMiddleware from "../middleware/logger";
 import rootReducer from "./reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { createBrowserHistory } from "history";
+// import { createBrowserHistory } from "history";
 
-const history = createBrowserHistory();
+// const history = createBrowserHistory();
 
 export type StoreState = ReturnType<typeof rootReducer>;
 
