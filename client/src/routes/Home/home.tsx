@@ -1,17 +1,26 @@
-import { useDispatch } from "react-redux";
-import { getDoorQuery, resetDoor } from "../../store/actions/doorsActions";
+import { useDispatch, useSelector } from "react-redux";
+
+import { StoreState } from "../../store/configureStore";
 import Flats from "../../components/Flats/flats";
 import Map from "../../components/Map/map";
+import {
+  openDoorAction,
+  resetDoorAction,
+} from "../../store/actions/doorsActions";
+
 import classes from "../../App.module.scss";
 
-function Home() {
+const Home = () => {
   const dispatch = useDispatch();
-
-  const testAction = (arg: string) => {
-    dispatch(getDoorQuery(arg));
+  const o1 = useSelector((state: StoreState) => state.doors.lock.o1);
+  const o2 = useSelector((state: StoreState) => state.doors.lock.o2);
+  const disableButtons = o1 === 1 || o2 === 1 ? true : false;
+  const doorAction = (door: string) => {
+    dispatch(openDoorAction(door));
   };
+
   const resetAction = () => {
-    dispatch(resetDoor());
+    dispatch(resetDoorAction());
   };
 
   return (
@@ -21,12 +30,15 @@ function Home() {
         <Map />
       </div>
       <h1>Hello there</h1>
-      <button onClick={() => testAction("o1")}>Front Door</button>
-      <button onClick={() => testAction("o2")}>Flat Door</button>
-      <button onClick={() => resetAction()}>Reset Door</button>
-
+      <button disabled={disableButtons} onClick={() => doorAction("o1")}>
+        Open front Door
+      </button>
+      <button disabled={disableButtons} onClick={() => doorAction("o2")}>
+        Open flat Door
+      </button>
+      <button onClick={() => resetAction()}>Reset Doors</button>
     </div>
   );
-}
+};
 
 export default Home;

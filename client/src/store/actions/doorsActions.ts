@@ -1,38 +1,86 @@
-import { Action } from "redux";
+import { Action, Dispatch } from "redux";
+import axios, { AxiosResponse } from "axios";
+
 import doorTypes from "../types/doorTypes";
-import { Dispatch } from "redux";
-import axios from "axios";
-export interface GetQuery extends Action<typeof doorTypes.INIT_DOORS> {
+import { Lock } from "../reducers/doorsReducer";
+
+// -------------------- URLS --------------------
+// development URL
+const url = process.env.REACT_APP_DEV_URL;
+
+// production URL
+// const url = process.env.REACT_APP_PROD_URL;
+// -------------------- END of URLS --------------------
+
+// -------------------- ACTION INTERFACES --------------------
+export interface OpenDoorStart
+  extends Action<typeof doorTypes.OPEN_DOOR_START> {}
+export interface OpenDoorSuccess
+  extends Action<typeof doorTypes.OPEN_DOOR_SUCCESS> {
+  payload: Lock;
+}
+export interface OpenDoorFail extends Action<typeof doorTypes.OPEN_DOOR_FAIL> {
   payload: string;
 }
 
-export type Actions = GetQuery;
+export interface ResetDoorStart
+  extends Action<typeof doorTypes.RESET_DOOR_START> {}
+export interface ResetDoorSuccess
+  extends Action<typeof doorTypes.RESET_DOOR_SUCCESS> {
+  payload: Lock;
+}
+export interface ResetDoorFail
+  extends Action<typeof doorTypes.RESET_DOOR_FAIL> {
+  payload: string;
+}
 
-const devUrl = "http://localhost:9000";
-// const prodUrl = "http://18.195.50.192:9000";
-export const getDoorQuery = (arg: string) => async (dispatch: Dispatch) => {
+export type Actions =
+  | OpenDoorStart
+  | OpenDoorSuccess
+  | OpenDoorFail
+  | ResetDoorStart
+  | ResetDoorSuccess
+  | ResetDoorFail;
+// -------------------- END of ACTION INTERFACES --------------------
+
+// -------------------- ACTIONS --------------------
+
+export const openDoorAction = (door: string) => async (dispatch: Dispatch) => {
+  dispatch({ type: doorTypes.OPEN_DOOR_START });
   try {
-    const responseData: any = await axios.put(
-      `${devUrl}/doorSwitch1/?h=A3%nm*Wb&id=Lg18299RHS10MxSh&${arg}=1`
+    const response: AxiosResponse<Lock> = await axios.put(
+      `${url}/openLock/?h=A3%nm*Wb&id=Lg18299RHS10MxSh&${door}=1`
     );
     dispatch({
-      type: doorTypes.INIT_DOORS,
-      payload: responseData.data.door,
+      type: doorTypes.OPEN_DOOR_SUCCESS,
+      payload: response.data,
     });
   } catch (err) {
     console.log("Erroras");
+    dispatch({
+      type: doorTypes.OPEN_DOOR_FAIL,
+    });
   }
 };
-export const resetDoor = () => async (dispatch: Dispatch) => {
+
+export const resetDoorAction = () => async (dispatch: Dispatch) => {
+  dispatch({ type: doorTypes.RESET_DOOR_START });
+
   try {
-    const responseData: any = await axios.put(
-      `${devUrl}/reset/`
+    const response: AxiosResponse<Lock> = await axios.put(
+      `${url}/reset/?h=A3%nm*Wb&id=Lg18299RHS10MxSh`
     );
-    // dispatch({
-    //   type: doorTypes.INIT_DOORS,
-    //   payload: responseData.data.door,
-    // });
+    dispatch({
+      type: doorTypes.RESET_DOOR_SUCCESS,
+      payload: response.data,
+    });
   } catch (err) {
     console.log("Erroras");
+    dispatch({
+      type: doorTypes.RESET_DOOR_FAIL,
+    });
   }
 };
+
+// -------------------- END of ACTIONS --------------------
+
