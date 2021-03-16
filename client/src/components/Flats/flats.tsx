@@ -95,7 +95,6 @@ function Flats() {
       phone: "847-440-3110",
     },
   ];
-  console.log(fictionalFlats, "Flats");
   return (
     <div className={classes.Flats}>
       <ul>
@@ -109,12 +108,12 @@ function Flats() {
               <div className={classes.flatContent}>
                 <div className={classes.flatImg}>
                   <button className={classes.arrowLeft}>
-                    <img src={arrowLeft} alt="arrowRight" /> 
+                    <img src={arrowLeft} alt="arrowRight" />
                   </button>
                   <img
                     className={classes.MainImage}
                     src={flat.mainImage}
-                    alt="Main-Flat-Photo"
+                    alt="Main-Flat"
                   />
                   <button className={classes.arrowRight}>
                     <img src={arrowRight} alt="arrowRight" />

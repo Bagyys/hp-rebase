@@ -1,7 +1,7 @@
 import classes from "./filter.module.scss";
 import LoupeImg from "../../assets/images/loupe.png";
 import Dropdown from "../DropDown/DropDown";
-
+import CustomDropDown from "../DropDown/DropDownTypes/customDropDown";
 function Filter() {
   const priceData = [
     {
@@ -72,6 +72,13 @@ function Filter() {
           <Dropdown title="Type" items={typeData} type="list" />
           <Dropdown title="Beds" items={[]} type="beds" />
           <Dropdown title="Lifestyle" items={lifeStyleData} type="list" />
+          <Dropdown title="Move-In Date" items={[]} type="calendar" />
+          <Dropdown
+            title="More"
+            items={[]}
+            type="calendar"
+            customComponent={CustomDropDown}
+          />
         </div>
       </div>
     </div>

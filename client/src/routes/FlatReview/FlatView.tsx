@@ -2,7 +2,6 @@ import classes from "./FlatReview.module.scss";
 import Modal from "react-modal";
 import { useState } from "react";
 import { FlatInterface } from "../../components/Flats/flats";
-import { RouteComponentProps } from "react-router";
 
 interface PropsInterface {
   location: {
@@ -30,12 +29,12 @@ function FlatView(props: PropsInterface) {
       <div className={classes.FlatBox}>
         <div className={classes.ImagesBox}>
           <div className={classes.MainImage}>
-            <img src={flat.mainImage} alt="Flat-main-image" />
+            <img src={flat.mainImage} alt="Flat-main" />
           </div>
           <div className={classes.OtherImages}>
-            <img src={flat.mainImage} alt="Flat-other-image" />
-            <img src={flat.mainImage} alt="Flat-other-image" />
-            <img src={flat.mainImage} alt="Flat-other-image" />
+            <img src={flat.mainImage} alt="Flat-other" />
+            <img src={flat.mainImage} alt="Flat-other" />
+            <img src={flat.mainImage} alt="Flat-other" />
           </div>
         </div>
         <div className={classes.FlatDescription}>
