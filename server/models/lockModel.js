@@ -23,7 +23,7 @@ const lockSchema = new Schema(
     o3: { type: Number, default: 0 },
     // error
     // do we need to save error?
-    e: { type: Number, default: 0 },
+    e: { type: String, default: "0" },
     lockOpened: new Schema(
       {
         o1: [

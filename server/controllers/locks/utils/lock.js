@@ -1,7 +1,7 @@
 const { Lock } = require("../../../models/lockModel");
 // let debug = require("debug");
 
-exports.reset = async (lockId, n1, n3) => {
+exports.reset = async (lockId, n1, n3, error) => {
   const updatedLock = await Lock.findOneAndUpdate(
     { lockId: lockId },
     {
@@ -18,6 +18,7 @@ exports.reset = async (lockId, n1, n3) => {
         o1: 0,
         o2: 0,
         o3: 0,
+        e: error,
       },
       $push: { [`closed.o1`]: new Date(), [`closed.o2`]: new Date() },
     },
@@ -37,7 +38,7 @@ exports.reset = async (lockId, n1, n3) => {
     o1,
     o2,
     o3,
-    interval: t,
+    timeInterval: t,
     e,
   } = updatedLock;
   const n2 = 0;
