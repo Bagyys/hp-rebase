@@ -20,7 +20,7 @@ exports.addLock = async (req, res) => {
     ) {
       const emptyTimeStampArrays = { o1: [], o2: [] };
       const lockObject = {
-        // lockId: data.id, ar bereikalinga sita reiksme apskritai modelyje??
+        lockId: data.id, //ar bereikalinga sita reiksme apskritai modelyje??
         timeInterval: data.t,
         i1: data.i1,
         i2: data.i2,

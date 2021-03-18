@@ -12,21 +12,14 @@ exports.handleLock = async (req, res) => {
     console.log("send error");
     return res.status(404).send("netu parametrof");
   }
+  if (!data.h || data.h !== "A3%nm*Wb") {
+    console.log("data h undefined or incorrect");
+    console.log("send error");
+    return res.status(404).send("netu metki");
+  }
   try {
-    if (!data.h || data.h !== "A3%nm*Wb") {
-      console.log("data h undefined or incorrect");
-      console.log("send error");
-      // TODO : reset to initial state  ???
-      return res.status(404).send("netu metki");
-    }
     let updatedLock;
-    let dataInDb = await Lock.findOne({ lockId: data.id });
-    // console.log("dataInDb");
-    // console.log(dataInDb);
-    // console.log("dataInDb.o1");
-    // console.log(dataInDb.o1);
-    // console.log("dataInDb.o2");
-    // console.log(dataInDb.o2);
+    const dataInDb = await Lock.findOne({ lockId: data.id });
     //gauname o1===0, o2===0, n2===0
     if (data.o1 === "0" && data.o2 === "0" && data.n2 === "0") {
       console.log("condition: query o1=0, o2=0, n2=0");

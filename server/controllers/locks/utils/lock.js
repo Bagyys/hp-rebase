@@ -20,7 +20,10 @@ exports.reset = async (lockId, n1, n3, error) => {
         o3: 0,
         e: error,
       },
-      $push: { [`closed.o1`]: new Date(), [`closed.o2`]: new Date() },
+      $push: {
+        [`lockClosed.o1`]: { time: new Date(), user: "system reset" },
+        [`lockClosed.o2`]: { time: new Date(), user: "system reset" },
+      },
     },
     { new: true }
   );

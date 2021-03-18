@@ -53,7 +53,8 @@ const lockSchema = new Schema(
           new Schema(
             {
               time: { type: Date },
-              user: { type: Schema.Types.ObjectId, ref: "User" }, // if closed by system - what user???
+              // user: { type: Schema.Types.ObjectId, ref: "User" }, // if closed by system - what user???
+              user: { type: String }, // if closed by system - what user???
             },
             { _id: false }
           ),
@@ -62,7 +63,8 @@ const lockSchema = new Schema(
           new Schema(
             {
               time: { type: Date },
-              user: { type: Schema.Types.ObjectId, ref: "User" }, // if closed by system - what user???
+              // user: { type: Schema.Types.ObjectId, ref: "User" }, // if closed by system - what user???
+              user: { type: String }, // if closed by system - what user???
             },
             { _id: false }
           ),
