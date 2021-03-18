@@ -12,21 +12,14 @@ exports.handleLock = async (req, res) => {
     console.log("send error");
     return res.status(404).send("netu parametrof");
   }
+  if (!data.h || data.h !== "A3%nm*Wb") {
+    console.log("data h undefined or incorrect");
+    console.log("send error");
+    return res.status(404).send("netu metki");
+  }
   try {
-    if (!data.h || data.h !== "A3%nm*Wb") {
-      console.log("data h undefined or incorrect");
-      console.log("send error");
-      // TODO : reset to initial state  ???
-      return res.status(404).send("netu metki");
-    }
     let updatedLock;
-    let dataInDb = await Lock.findOne({ lockId: data.id });
-    // console.log("dataInDb");
-    // console.log(dataInDb);
-    // console.log("dataInDb.o1");
-    // console.log(dataInDb.o1);
-    // console.log("dataInDb.o2");
-    // console.log(dataInDb.o2);
+    const dataInDb = await Lock.findOne({ lockId: data.id });
     //gauname o1===0, o2===0, n2===0
     if (data.o1 === "0" && data.o2 === "0" && data.n2 === "0") {
       console.log("condition: query o1=0, o2=0, n2=0");
@@ -49,7 +42,7 @@ exports.handleLock = async (req, res) => {
           o1,
           o2,
           o3,
-          interval: t,
+          timeInterval: t,
         } = dataInDb;
         const { n1, n2, n3, e } = data;
 
@@ -79,7 +72,7 @@ exports.handleLock = async (req, res) => {
           o1,
           o2,
           o3,
-          interval: t,
+          timeInterval: t,
         } = dataInDb;
         const { n1, n3, e } = data;
         const n2 = 1;
@@ -90,9 +83,9 @@ exports.handleLock = async (req, res) => {
         return res.status(200).send(result);
       } else {
         // edge case - reset lock to initial state
-        const result = reset(data.id, data.n1, data.n3);
-        console.log("response: o1=0, o2=0, n2=0");
-        console.log(`return o1=${o1}, o2=${o2}, n2=${n2}`);
+        const result = await reset(data.id, data.n1, data.n3, "F");
+        console.log("94 response: o1=0, o2=0, n2=0, e=F");
+        console.log(`return ${result}`);
         return res.status(200).send(result);
       }
     } else if (data.o1 === "0" && data.o2 === "0" && data.n2 === "1") {
@@ -117,7 +110,7 @@ exports.handleLock = async (req, res) => {
           o1,
           o2,
           o3,
-          interval: t,
+          timeInterval: t,
         } = dataInDb;
         const { n1, n3 } = data;
         const n2 = 1;
@@ -131,9 +124,10 @@ exports.handleLock = async (req, res) => {
         return res.status(200).send(result);
       } else {
         // edge case - reset lock to initial state
-        const result = reset(data.id, data.n1, data.n3);
-        console.log("response: o1=0, o2=0, n2=0");
-        console.log(`return o1=${o1}, o2=${o2}, n2=${n2}`);
+        const result = await reset(data.id, data.n1, data.n3, "F");
+        console.log("135 response: o1=0, o2=0, n2=0, e=F");
+        console.log(`return ${result}`);
+
         return res.status(200).send(result);
       }
     } else if (
@@ -190,7 +184,7 @@ exports.handleLock = async (req, res) => {
           o1,
           o2,
           o3,
-          interval: t,
+          timeInterval: t,
           e,
         } = updatedLock;
         const { n1, n3 } = data;
@@ -246,7 +240,7 @@ exports.handleLock = async (req, res) => {
           o1,
           o2,
           o3,
-          interval: t,
+          timeInterval: t,
           e,
         } = updatedLock;
         const { n1, n3 } = data;
@@ -258,17 +252,17 @@ exports.handleLock = async (req, res) => {
         return res.status(200).send(result);
       } else {
         // edge case - reset lock to initial state
-        const result = reset(data.id, data.n1, data.n3);
-        console.log("response: o1=0, o2=0, n2=0");
-        console.log(`return o1=${o1}, o2=${o2}, n2=${n2}`);
+        const result = await reset(data.id, data.n1, data.n3, "F");
+        console.log("263 response: o1=0, o2=0, n2=0, e=F");
+        console.log(`return ${result}`);
         return res.status(200).send(result);
       }
     } else {
       // unsupported combination - reset to initial state
       // edge case - reset lock to initial state
-      const result = reset(data.id, data.n1, data.n3);
-      console.log("response: o1=0, o2=0, n2=0");
-      console.log(`return o1=${o1}, o2=${o2}, n2=${n2}`);
+      const result = await reset(data.id, data.n1, data.n3, "F");
+      console.log("271 response: o1=0, o2=0, n2=0, e=F");
+      console.log(`return ${result}`);
       return res.status(200).send(result);
     }
   } catch (err) {

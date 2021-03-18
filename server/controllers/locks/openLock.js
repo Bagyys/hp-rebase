@@ -21,7 +21,9 @@ exports.openLock = async (req, res) => {
         { lockId: data.id },
         {
           $set: { o1: +data.o1 },
-          $push: { [`opened.o1`]: new Date() },
+          $push: {
+            [`lockOpened.o1`]: { time: new Date(), user: "button click" },
+          },
         },
         { new: true }
       );
@@ -34,7 +36,9 @@ exports.openLock = async (req, res) => {
         { lockId: data.id },
         {
           $set: { o2: +data.o2 },
-          $push: { [`opened.o2`]: new Date() },
+          $push: {
+            [`lockOpened.o2`]: { time: new Date(), user: "button click" },
+          },
         },
         { new: true }
       );
