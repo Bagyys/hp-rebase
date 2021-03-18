@@ -2,6 +2,9 @@ import classes from "./filter.module.scss";
 import LoupeImg from "../../assets/images/loupe.png";
 import Dropdown from "../DropDown/DropDown";
 import CustomDropDown from "../DropDown/DropDownTypes/customDropDown";
+import SortDropDown from "../DropDown/SortDropDown/SortDropDown";
+import sortImg from "../../assets/images/sort.png";
+import savedImg from "../../assets/images/saved.png";
 function Filter() {
   const priceData = [
     {
@@ -60,25 +63,41 @@ function Filter() {
     },
   ];
 
+  const saved = () => {
+    alert("Successfully saved search");
+  };
+
   return (
     <div className={classes.Filter}>
       <div className={classes.FilterWrapper}>
-        <div className={classes.input}>
-          <img src={LoupeImg} alt="Search icon" />
-          <input type="search" placeholder="Frankfrut, Germany"></input>
+        <div className={classes.SearchInputs}>
+          <div className={classes.input}>
+            <img src={LoupeImg} alt="Search icon" />
+            <input type="search" placeholder="Frankfrut, Germany"></input>
+          </div>
+          <div className={classes.optionButtons}>
+            <Dropdown title="Price" items={priceData} type="mixed" />
+            <Dropdown title="Type" items={typeData} type="list" />
+            <Dropdown title="Beds" items={[]} type="beds" />
+            <Dropdown title="Lifestyle" items={lifeStyleData} type="list" />
+            <Dropdown title="Move-In Date" items={[]} type="calendar" />
+            <Dropdown
+              title="More"
+              items={[]}
+              type="custom"
+              customComponent={<CustomDropDown />}
+            />
+          </div>
         </div>
-        <div className={classes.optionButtons}>
-          <Dropdown title="Price" items={priceData} type="mixed" />
-          <Dropdown title="Type" items={typeData} type="list" />
-          <Dropdown title="Beds" items={[]} type="beds" />
-          <Dropdown title="Lifestyle" items={lifeStyleData} type="list" />
-          <Dropdown title="Move-In Date" items={[]} type="calendar" />
-          <Dropdown
-            title="More"
-            items={[]}
-            type="calendar"
-            customComponent={CustomDropDown}
-          />
+        <div className={classes.Sorting}>
+          <div className={classes.Sort}>
+            <SortDropDown title="Sort"/>
+            <img src={sortImg} alt="Sort-Settings" />
+          </div>
+          <div onClick={() => saved()} className={classes.Save}>
+            <p>Save</p>
+            <img src={savedImg} alt="Save" />
+          </div>
         </div>
       </div>
     </div>

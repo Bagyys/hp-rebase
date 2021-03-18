@@ -1,17 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import classes from "./DropDown.module.scss";
 import arrow from "../../assets/images/arrowDown.png";
-
 export interface DropDownInterface {
   title: string;
   items?: any;
   type: string;
-  customComponent?: any;
+  customComponent?: JSX.Element;
+}
+
+interface itemInterface {
+  id: number;
+  value: string;
 }
 
 function DropDown({ title, items, type, customComponent }: DropDownInterface) {
   const [open, setOpen] = useState<boolean>(false);
-  console.log(typeof customComponent, "Komponentas?");
   const toggle = (value: boolean) => {
     setOpen(value);
   };
@@ -22,7 +25,7 @@ function DropDown({ title, items, type, customComponent }: DropDownInterface) {
   let menuRef: any = useRef();
 
   useEffect(() => {
-    let handler = (event: any) => {
+    let handler = (event: Event) => {
       if (!menuRef.current.contains(event.target)) {
         setOpen(false);
       }
@@ -40,8 +43,8 @@ function DropDown({ title, items, type, customComponent }: DropDownInterface) {
         tabIndex={0}
         className={classes.ddHeader}
         role="button"
-        onKeyPress={(e) => toggle(!open)}
-        onClick={(e) => toggle(!open)}
+        onKeyPress={() => toggle(!open)}
+        onClick={() => toggle(!open)}
       >
         <div className={classes.ddHeaderTitle}>
           <p>{title}</p>
@@ -58,7 +61,7 @@ function DropDown({ title, items, type, customComponent }: DropDownInterface) {
       </div>
       {open && (
         <ul className={classes.ddList}>
-          {type !== "list" && type !== "calendar" ? (
+          {type !== "list" && type !== "calendar" && type !== "custom" ? (
             <div className={classes.inputs}>
               <input
                 type="tel"
@@ -83,8 +86,8 @@ function DropDown({ title, items, type, customComponent }: DropDownInterface) {
               </li>
             ) : null}
 
-            {type !== "calendar" ? (
-              items.map((item: any) => {
+            {type !== "calendar" && type !== "custom" ? (
+              items.map((item: itemInterface) => {
                 if (type === "mixed") {
                   return (
                     <li key={item.id}>
@@ -104,8 +107,11 @@ function DropDown({ title, items, type, customComponent }: DropDownInterface) {
               })
             ) : (
               <div>
-                <input type="date" />
-                <div>{customComponent}</div>
+                {type === "calendar" ? (
+                  <input type="date" />
+                ) : (
+                  <div>{customComponent}</div>
+                )}
               </div>
             )}
           </div>
