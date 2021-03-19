@@ -5,8 +5,8 @@ const { reset } = require("./utils/lock");
 exports.handleLock = async (req, res) => {
   console.log("handleLock");
   const data = req.query;
-  // console.log("data");
-  // console.log(data);
+  console.log("data");
+  console.log(data);
   if (data.o1 === undefined || data.o2 === undefined || data.n2 === undefined) {
     console.log("data o1, o2, n2 undefined");
     console.log("send error");
@@ -17,9 +17,27 @@ exports.handleLock = async (req, res) => {
     console.log("send error");
     return res.status(404).send("netu metki");
   }
+  if (data.id === undefined || data.id.length < 24) {
+    console.log("data id undefined or too short");
+    console.log("send error");
+    return res.status(404).send("nepravelnyj id");
+  }
   try {
     let updatedLock;
-    const dataInDb = await Lock.findOne({ lockId: data.id });
+    let dataInDb;
+    // const dataInDb = await Lock.findOne({ lockId: data.id });
+    try {
+      dataInDb = await Lock.findById(data.id);
+      if (dataInDb === null || dataInDb === undefined) {
+        console.log("no lock found by id");
+        console.log("send error");
+        return res.status(404).send("nepravelnyj id");
+      }
+    } catch (error) {
+      console.log("no lock found by id");
+      console.log("send error");
+      return res.status(404).send("nepravelnyj id");
+    }
     //gauname o1===0, o2===0, n2===0
     if (data.o1 === "0" && data.o2 === "0" && data.n2 === "0") {
       console.log("condition: query o1=0, o2=0, n2=0");
@@ -112,7 +130,7 @@ exports.handleLock = async (req, res) => {
           o3,
           timeInterval: t,
         } = dataInDb;
-        const { n1, n3 } = data;
+        const { n1, n3, e } = data;
         const n2 = 1;
         // URL EXAMPLE
         // A3%nm*Wb_ID=Lg18299RHS10MxSh_&i1=1_&i2=1_&i3=1_&i4=1_&i5=1_&i6=1_&i7=1_&i8=1_&i9=1_&n1=1_&n2=1_&n3=1_&o1=0_&o2=0_&o3=0_&e=0
@@ -148,28 +166,38 @@ exports.handleLock = async (req, res) => {
       ) {
         console.log("condition: query o1=1, o2=0 AND db o1=1, o2=0");
         console.log(`db o1=${dataInDb.o1}, o2=${dataInDb.o2}`);
-
-        updatedLock = await Lock.findOneAndUpdate(
-          { lockId: data.id },
-          {
-            $set: {
-              i1: data.i1,
-              i2: data.i2,
-              i3: data.i3,
-              i4: data.i4,
-              i5: data.i5,
-              i6: data.i6,
-              i7: data.i7,
-              i8: data.i8,
-              i9: data.i9,
-              o1: 0,
-              o2: +data.o2,
-              o3: data.o3,
+        // updatedLock = await Lock.findOneAndUpdate(
+        try {
+          updatedLock = await Lock.findByIdAndUpdate(
+            // { lockId: data.id },
+            data.id,
+            {
+              $set: {
+                i1: data.i1,
+                i2: data.i2,
+                i3: data.i3,
+                i4: data.i4,
+                i5: data.i5,
+                i6: data.i6,
+                i7: data.i7,
+                i8: data.i8,
+                i9: data.i9,
+                o1: 0,
+                o2: +data.o2,
+                o3: data.o3,
+                e: 0,
+              },
+              $push: {
+                [`lockClosed.o1`]: { time: new Date(), user: "lock close" },
+              },
             },
-            $push: { [`closed.o1`]: new Date() },
-          },
-          { new: true }
-        );
+            { new: true }
+          );
+        } catch (error) {
+          console.log("no lock found by id");
+          console.log("send error");
+          return res.status(404).send("nepravelnyj id");
+        }
         // get values to return from updated lock
         const {
           i1,
@@ -205,27 +233,38 @@ exports.handleLock = async (req, res) => {
       ) {
         console.log("condition: query o1=0, o2=1 AND db o1=0, o2=1");
         console.log(`db o1=${dataInDb.o1}, o2=${dataInDb.o2}`);
-        updatedLock = await Lock.findOneAndUpdate(
-          { lockId: data.id },
-          {
-            $set: {
-              i1: data.i1,
-              i2: data.i2,
-              i3: data.i3,
-              i4: data.i4,
-              i5: data.i5,
-              i6: data.i6,
-              i7: data.i7,
-              i8: data.i8,
-              i9: data.i9,
-              o1: +data.o1,
-              o2: 0,
-              o3: +data.o3,
+        // updatedLock = await Lock.findOneAndUpdate(
+        try {
+          updatedLock = await Lock.findByIdAndUpdate(
+            // { lockId: data.id },
+            data.id,
+            {
+              $set: {
+                i1: data.i1,
+                i2: data.i2,
+                i3: data.i3,
+                i4: data.i4,
+                i5: data.i5,
+                i6: data.i6,
+                i7: data.i7,
+                i8: data.i8,
+                i9: data.i9,
+                o1: +data.o1,
+                o2: 0,
+                o3: +data.o3,
+                e: 0,
+              },
+              $push: {
+                [`lockClosed.o2`]: { time: new Date(), user: "lock close" },
+              },
             },
-            $push: { [`closed.o2`]: new Date() },
-          },
-          { new: true }
-        );
+            { new: true }
+          );
+        } catch (error) {
+          console.log("no lock found by id");
+          console.log("send error");
+          return res.status(404).send("nepravelnyj id");
+        }
         // get values to return from updated lock
         const {
           i1,

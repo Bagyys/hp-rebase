@@ -14,13 +14,13 @@ exports.addLock = async (req, res) => {
   }
   try {
     if (
-      !data.id ||
-      data.id.length !== 24 ||
-      data.id !== "Lg18299RHS10MxShFFFFFFFF"
+      data.id ||
+      data.id.length === 24 ||
+      data.id === "Lg18299RHS10MxShFFFFFFFF"
     ) {
       const emptyTimeStampArrays = { o1: [], o2: [] };
       const lockObject = {
-        lockId: data.id, //ar bereikalinga sita reiksme apskritai modelyje??
+        // lockId: data.id, //ar bereikalinga sita reiksme apskritai modelyje??
         timeInterval: data.t,
         i1: data.i1,
         i2: data.i2,
