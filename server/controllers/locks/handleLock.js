@@ -17,7 +17,7 @@ exports.handleLock = async (req, res) => {
     console.log("send error");
     return res.status(404).send("netu metki");
   }
-  if (data.id === undefined || data.id.length < 24) {
+  if (data.id === undefined || data.id.length !== 24) {
     console.log("data id undefined or too short");
     console.log("send error");
     return res.status(404).send("nepravelnyj id");
