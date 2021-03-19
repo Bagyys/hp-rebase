@@ -2,8 +2,10 @@ const { Lock } = require("../../../models/lockModel");
 // let debug = require("debug");
 
 exports.reset = async (lockId, n1, n3, error) => {
-  const updatedLock = await Lock.findOneAndUpdate(
-    { lockId: lockId },
+  // updatedLock = await Lock.findOneAndUpdate(
+  updatedLock = await Lock.findByIdAndUpdate(
+    // { lockId: data.id },
+    lockId,
     {
       $set: {
         // i1: data.i1,
