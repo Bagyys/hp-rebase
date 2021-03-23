@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const lockSchema = new Schema(
   {
     // lock id
-    lockId: { type: String, required: false },
+    // lockId: { type: String, required: false },
+    
     // interval for lock
     timeInterval: { type: Number, default: 1 },
     // parameters

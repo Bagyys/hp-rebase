@@ -13,7 +13,10 @@ exports.getAllLocks = async (req, res) => {
   }
 
   try {
-    const locks = await Lock.find({}, { o1: 1, o2: 1, o3: 1 });
+    const locks = await Lock.find(
+      {},
+      { lockOpened: 0, lockClosed: 0, createdAt: 0, updatedAt: 0, __v: 0 }
+    );
     if (locks !== undefined || locks !== null) {
       return res.status(200).send(locks);
     } else {

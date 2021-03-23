@@ -11,6 +11,16 @@ exports.openLock = async (req, res) => {
   if (!data.h || data.h !== "A3%nm*Wb") {
     return res.status(404).send("netu metki");
   }
+  if (data.id === undefined || data.id.length !== 24) {
+    console.log("data id undefined or too short");
+    console.log("send error");
+    return res.status(404).send("nepravelnyj id");
+  }
+  if (data.o1 === undefined && data.o2 === undefined) {
+    console.log("data o1, o2, n2 undefined");
+    console.log("send error");
+    return res.status(404).send("netu parametrof");
+  }
   try {
     let openedLock;
 
@@ -19,7 +29,6 @@ exports.openLock = async (req, res) => {
       // ar praeina
       // openedLock = await Lock.findOneAndUpdate(
       openedLock = await Lock.findByIdAndUpdate(
-        // { lockId: data.id },
         data.id,
         {
           $set: { o1: +data.o1 },
@@ -36,7 +45,7 @@ exports.openLock = async (req, res) => {
     if (data.o2 != undefined && data.o2 == 1) {
       // openedLock = await Lock.findOneAndUpdate(
       openedLock = await Lock.findByIdAndUpdate(
-        // { lockId: data.id },
+        data.id,
         {
           $set: { o2: +data.o2 },
           $push: {

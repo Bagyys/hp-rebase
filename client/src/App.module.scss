@@ -12,14 +12,10 @@
     margin: 0 auto;
     height: 90vh;
   }
-  button{
-    background-color: blue;
-    color: white;
-    margin: 10px;
-    padding: 5px 10px;
-    &:disabled{
-      background-color: gray;
-      cursor: not-allowed;
+  .Locks {
+    display: block;
+    h1 {
+      font-size: 35px;
     }
   }
 }
