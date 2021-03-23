@@ -8,10 +8,10 @@ exports.openLock = async (req, res) => {
   console.log(req.query);
   const data = req.query;
 
+  if (!data.h || data.h !== "A3%nm*Wb") {
+    return res.status(404).send("netu metki");
+  }
   try {
-    if (!data.h || data.h !== "A3%nm*Wb") {
-      return res.status(404).send("netu metki");
-    }
     let openedLock;
 
     // ar reikia apsidrausti, kai jau esama o1 open = true? arba o2 open = true?

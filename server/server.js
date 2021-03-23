@@ -39,7 +39,7 @@ app.use(
   })
 );
 
-const allDoors = require("./routes/doorRoutes");
+const allDoors = require("./routes/lockRoutes");
 const allFlats = require("./routes/flatRoutes");
 
 app.use("/", allDoors);

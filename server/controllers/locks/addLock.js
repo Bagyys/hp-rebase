@@ -12,36 +12,38 @@ exports.addLock = async (req, res) => {
   if (!data.h || data.h !== "A3%nm*Wb") {
     return res.status(404).send("netu metki");
   }
+  if (
+    data.id === undefined ||
+    data.id.length !== 24 ||
+    data.id !== "Lg18299RHS10MxShFFFFFFFF"
+  ) {
+    console.log("data id undefined or incorrect");
+    console.log("send error");
+    return res.status(404).send("plochije parametrof");
+  }
   try {
-    if (
-      data.id ||
-      data.id.length === 24 ||
-      data.id === "Lg18299RHS10MxShFFFFFFFF"
-    ) {
-      const emptyTimeStampArrays = { o1: [], o2: [] };
-      const lockObject = {
-        // lockId: data.id, //ar bereikalinga sita reiksme apskritai modelyje??
-        timeInterval: data.t,
-        i1: data.i1,
-        i2: data.i2,
-        i3: data.i3,
-        i4: data.i4,
-        i5: data.i5,
-        i6: data.i6,
-        i7: data.i7,
-        i8: data.i8,
-        i9: data.i9,
-        o1: data.o1,
-        o2: data.o2,
-        o3: data.o3,
-        e: data.e,
-        lockOpened: emptyTimeStampArrays,
-        lockClosed: emptyTimeStampArrays,
-      };
+    const emptyTimeStampArrays = { o1: [], o2: [] };
+    const lockObject = {
+      timeInterval: data.t,
+      i1: data.i1,
+      i2: data.i2,
+      i3: data.i3,
+      i4: data.i4,
+      i5: data.i5,
+      i6: data.i6,
+      i7: data.i7,
+      i8: data.i8,
+      i9: data.i9,
+      o1: data.o1,
+      o2: data.o2,
+      o3: data.o3,
+      e: data.e,
+      lockOpened: emptyTimeStampArrays,
+      lockClosed: emptyTimeStampArrays,
+    };
 
-      const createdLock = new Lock(lockObject);
-      newLock = await createdLock.save();
-    }
+    const createdLock = new Lock(lockObject);
+    newLock = await createdLock.save();
     if (newLock !== undefined || newLock !== null) {
       const {
         _id,
