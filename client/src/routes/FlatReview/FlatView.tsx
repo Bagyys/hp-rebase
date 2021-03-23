@@ -8,6 +8,8 @@ import { GrRotateRight } from "react-icons/gr";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import BreadCrumbs from "../../components/BreadCrums/BreadCrums";
 import { useState } from "react";
+// import Calendar from "@lls/react-light-calendar";
+// import "@lls/react-light-calendar/dist/index.css";
 interface PropsInterface {
   location: {
     state: {
@@ -20,53 +22,53 @@ interface PropsInterface {
 function FlatView(props: PropsInterface) {
   const flat = props.location.state.flat;
   const [current, setCurrent] = useState(0);
-  const element1 = (
-    <div className={classes.Images}>
-      <div className={classes.MainImage}>
-        <img src={flat.images[0]} alt="Flat-main" />
-      </div>
-      <div className={classes.OtherImages}>
-        <div className={classes.firstColumn}>
-          <img src={flat.images[1]} alt="Flat-other" />
-          <img src={flat.images[2]} alt="Flat-other" />
-        </div>
-        <div className={classes.secondColumn}>
-          <img src={flat.images[3]} alt="Flat-other" />
-          <img src={flat.images[4]} alt="Flat-other" />
-        </div>
-      </div>
-    </div>
-  );
+
+  const element1 = [
+    flat.images[0],
+    flat.images[1],
+    flat.images[2],
+    flat.images[3],
+    flat.images[4],
+  ];
+  let ultimateArray = [];
+  ultimateArray.push(element1);
+
   let arrayAfterLoad = flat.images.slice(5);
-  arrayAfterLoad.length = 8;
+  var i,
+    j,
+    temparray,
+    chunk = 8;
 
-  const element2 = (
-    <div className={classes.Images2}>
-      {arrayAfterLoad.map((image: string) => {
-        console.log(image, "kokie rezults?");
-        return (
-          <div className={classes.imgBox}>
-            <img src={image} />
-          </div>
-        );
-      })}
-    </div>
-  );
+  for (i = 0, j = arrayAfterLoad.length; i < j; i += chunk) {
+    temparray = arrayAfterLoad.slice(i, i + chunk);
 
-  let ultimateArray = [element1, element2];
+    if (temparray.length < 8) {
+      let leftSpace = 8 - temparray.length;
+      for (i = 0; i < leftSpace; i++) {
+        temparray.push("/no-photo.png");
+      }
+    }
+    const testArray = [];
+    testArray.push(temparray);
+
+    ultimateArray = [...ultimateArray, ...testArray];
+  }
+
+  ultimateArray.map((item) => {});
   const length = ultimateArray.length;
+
   const nextSlide = () => {
-    setCurrent(current === length - 1 ? 0 : current + 1);
+    setCurrent(current === 0 ? length - 1 : current - 1);
   };
 
   const prevSlide = () => {
-    setCurrent(current === 0 ? length - 1 : current - 1);
+    setCurrent(current === length - 1 ? 0 : current + 1);
   };
 
   if (!Array.isArray(ultimateArray) || ultimateArray.length <= 0) {
     return null;
   }
-
+  console.log(current);
   return (
     <div className={classes.FlatReview}>
       <div className={classes.FlatBox}>
@@ -86,17 +88,76 @@ function FlatView(props: PropsInterface) {
             />
           </div>
           {ultimateArray.map((item, index) => {
-            return (
-              <div
-                className={
-                  index === current
-                    ? `${classes.slide} ${classes.active}`
-                    : classes.slide
-                }
-              >
-                {index === current && item}
-              </div>
-            );
+            if (index === 0) {
+              return (
+                <div
+                  className={
+                    index === current
+                      ? `${classes.slide} ${classes.active}`
+                      : classes.slide
+                  }
+                >
+                  {index === current && (
+                    <div className={classes.Images}>
+                      <div className={classes.MainImage}>
+                        {item[0] === undefined ? (
+                          <img src="/no-photo.png" />
+                        ) : (
+                          <img src={item[0]} alt="Flat-other" />
+                        )}
+                      </div>
+                      <div className={classes.OtherImages}>
+                        <div className={classes.firstColumn}>
+                          {item[1] === undefined ? (
+                            <img src="/no-photo.png" />
+                          ) : (
+                            <img src={item[1]} alt="Flat-other" />
+                          )}
+                          {item[2] === undefined ? (
+                            <img src="/no-photo.png" />
+                          ) : (
+                            <img src={item[2]} alt="Flat-other" />
+                          )}
+                        </div>
+                        <div className={classes.secondColumn}>
+                          {item[3] === undefined ? (
+                            <img src="/no-photo.png" />
+                          ) : (
+                            <img src={item[3]} alt="Flat-other" />
+                          )}
+                          {item[4] === undefined ? (
+                            <img src="/no-photo.png" />
+                          ) : (
+                            <img src={item[4]} alt="Flat-other" />
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            } else {
+              return (
+                <div
+                  className={
+                    index === current
+                      ? `${classes.slide} ${classes.active}`
+                      : classes.slide
+                  }
+                >
+                  <div className={classes.Images2}>
+                    {index === current &&
+                      item.map((photo: string) => {
+                        return (
+                          <div className={classes.imgBox}>
+                            <img src={photo} />
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              );
+            }
           })}
           <div className={classes.totalNumber}>
             <span>44 photos</span>
@@ -158,7 +219,10 @@ function FlatView(props: PropsInterface) {
               </div>
             </div>
           </div>
-          <div className={classes.calendar}>Kalendorius</div>
+          <div className={classes.calendar}>
+            {/* <Calendar startDate={startDate} onChange={this.onChange} /> */}
+            Kalendorius
+          </div>
         </div>
       </div>
     </div>

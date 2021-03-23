@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
+import { useState } from "react";
+
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import "./imageSlider.scss";
 

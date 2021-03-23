@@ -5,7 +5,6 @@ interface BreadCrumbsInterface {
 }
 
 function BreadCrumbs(props: BreadCrumbsInterface) {
-  console.log(props, " kokie props");
   return (
     <div className={classes.BreadCrumbs}>
       <a href="/">Home</a>
