@@ -46,10 +46,12 @@
       .Sort {
         cursor: pointer;
         display: flex;
+        align-items: center;
       }
       .Save {
         cursor: pointer;
         display: flex;
+        align-items: center;
         p {
           margin-right: 0.5rem;
           color: $lightBlue;

@@ -2,14 +2,14 @@ import classes from "./navigation.module.scss";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import NotificationImg from "../../assets/images/bell.png";
 import ProfileImg from "../../assets/images/profile.png";
-
+import LogoImg from "../../assets/images/Logo.png";
 function Navigation() {
   return (
     <div className={classes.Navigation}>
       <div className={classes.NavigationWrapper}>
         <div className={classes.Logo}>
           <a href="/">
-            <img src="./Logo.png" alt="Logo" />
+            <img src={LogoImg} alt="Logo" />
           </a>
         </div>
 

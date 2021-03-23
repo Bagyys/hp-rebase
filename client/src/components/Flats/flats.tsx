@@ -6,6 +6,7 @@ import arrowRight from "../../assets/images/arrowRight.png";
 import arrowLeft from "../../assets/images/arrowLeft.png";
 import LikeImg from "../../assets/images/like.png";
 import updateArrow from "../../assets/images/loading.png";
+import Slider from "../Slider/imageSlider";
 export interface FlatInterface {
   id: number;
   price: number;
@@ -37,6 +38,7 @@ export interface FlatInterface {
   isLofts: boolean;
   isUtilitiesIncluded: boolean;
   isCreatedAt: string;
+  images?: any;
 }
 
 function Flats() {
@@ -64,6 +66,16 @@ function Flats() {
       description:
         "Bacon ipsum dolor amet tongue buffalo alcatra salami fatback t-bone, shankle chicken pork belly rump. Meatloaf salami boudin beef ribs brisket, jowl pork chop tenderloin landjaeger. Corned beef cupim salami hamburger beef. Pork chop flank ham chuck, shoulder prosciutto turkey pastrami ball tip shankle ground round tail chislic. Shoulder landjaeger sausage kevin buffalo. Bresaola boudin alcatra ball tip.",
       mainImage: "/flat2.jpg",
+      images: [
+        "/flat.jpg",
+        "/flat2.jpg",
+        "/flat3.jpg",
+        "/flat4.jpg",
+        "/flat5.jpg",
+        "/flat6.jpg",
+        "/flat7.jpg",
+        "/flat8.jpg",
+      ],
       logoImage: "/flatLogo.png",
       mostRecent: true,
       address: "930 W Altgeld St, Chicago, IL 60614",
@@ -97,6 +109,7 @@ function Flats() {
       description:
         "Bacon ipsum dolor amet tongue buffalo alcatra salami fatback t-bone, shankle chicken pork belly rump. Meatloaf salami boudin beef ribs brisket, jowl pork chop tenderloin landjaeger. Corned beef cupim salami hamburger beef. Pork chop flank ham chuck, shoulder prosciutto turkey pastrami ball tip shankle ground round tail chislic. Shoulder landjaeger sausage kevin buffalo. Bresaola boudin alcatra ball tip.",
       mainImage: "/flat.jpg",
+      images: ["/flat2.jpg", "/flat.jpg", "/flat2.jpg"],
       logoImage: "/flatLogo.png",
       mostRecent: false,
       address: "930 W Altgeld St, Chicago, IL 60614",
@@ -130,6 +143,7 @@ function Flats() {
       description:
         "Bacon ipsum dolor amet tongue buffalo alcatra salami fatback t-bone, shankle chicken pork belly rump. Meatloaf salami boudin beef ribs brisket, jowl pork chop tenderloin landjaeger. Corned beef cupim salami hamburger beef. Pork chop flank ham chuck, shoulder prosciutto turkey pastrami ball tip shankle ground round tail chislic. Shoulder landjaeger sausage kevin buffalo. Bresaola boudin alcatra ball tip.",
       mainImage: "./flat2.jpg",
+      images: ["/flat2.jpg", "/flat.jpg", "/flat2.jpg"],
       logoImage: "/flatLogo.png",
       mostRecent: false,
       address: "930 W Altgeld St, Chicago, IL 60614",
@@ -163,6 +177,7 @@ function Flats() {
       description:
         "Bacon ipsum dolor amet tongue buffalo alcatra salami fatback t-bone, shankle chicken pork belly rump. Meatloaf salami boudin beef ribs brisket, jowl pork chop tenderloin landjaeger. Corned beef cupim salami hamburger beef. Pork chop flank ham chuck, shoulder prosciutto turkey pastrami ball tip shankle ground round tail chislic. Shoulder landjaeger sausage kevin buffalo. Bresaola boudin alcatra ball tip.",
       mainImage: "./flat.jpg",
+      images: ["/flat2.jpg", "/flat.jpg", "/flat2.jpg"],
       logoImage: "/flatLogo.png",
       mostRecent: true,
       address: "930 W Altgeld St, Chicago, IL 60614",
@@ -198,7 +213,7 @@ function Flats() {
           let daysDiff = Math.floor(diff);
           let publishedAt = (
             <div className={classes.PublishedAt}>
-              <img src={updateArrow} />
+              <img src={updateArrow} alt="Days-Ago" />
               <p>{daysDiff} Days Ago</p>
             </div>
           );
@@ -225,17 +240,7 @@ function Flats() {
               </div>
               <div className={classes.flatContent}>
                 <div className={classes.flatImg}>
-                  <button className={classes.arrowLeft}>
-                    <img src={arrowLeft} alt="arrowRight" />
-                  </button>
-                  <img
-                    className={classes.MainImage}
-                    src={flat.mainImage}
-                    alt="Main-Flat"
-                  />
-                  <button className={classes.arrowRight}>
-                    <img src={arrowRight} alt="arrowRight" />
-                  </button>
+                  <Slider slides={flat.images} />
                 </div>
                 <div className={classes.rightSide}>
                   <div className={classes.top}>

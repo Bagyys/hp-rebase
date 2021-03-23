@@ -3,7 +3,7 @@ import { getDoorQuery, resetDoor } from "../../store/actions/doorsActions";
 import Flats from "../../components/Flats/flats";
 import Map from "../../components/Map/map";
 import classes from "../../App.module.scss";
-
+import Filter from "../../components/Filter/filter";
 function Home() {
   const dispatch = useDispatch();
 
@@ -16,6 +16,7 @@ function Home() {
 
   return (
     <div className={classes.App}>
+      <Filter />
       <div className={classes.contentBox}>
         <Flats />
         <Map />
@@ -24,7 +25,6 @@ function Home() {
       <button onClick={() => testAction("o1")}>Front Door</button>
       <button onClick={() => testAction("o2")}>Flat Door</button>
       <button onClick={() => resetAction()}>Reset Door</button>
-
     </div>
   );
 }

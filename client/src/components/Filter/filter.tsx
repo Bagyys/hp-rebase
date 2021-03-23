@@ -3,8 +3,9 @@ import LoupeImg from "../../assets/images/loupe.png";
 import Dropdown from "../DropDown/DropDown";
 import CustomDropDown from "../DropDown/DropDownTypes/customDropDown";
 import SortDropDown from "../DropDown/SortDropDown/SortDropDown";
-import sortImg from "../../assets/images/sort.png";
-import savedImg from "../../assets/images/saved.png";
+import { BsArrowUpDown } from "react-icons/bs";
+import { BsBell } from "react-icons/bs";
+
 function Filter() {
   const priceData = [
     {
@@ -91,12 +92,12 @@ function Filter() {
         </div>
         <div className={classes.Sorting}>
           <div className={classes.Sort}>
-            <SortDropDown title="Sort"/>
-            <img src={sortImg} alt="Sort-Settings" />
+            <SortDropDown title="Sort" />
+            <BsArrowUpDown size="2em" color="#4886ff" />
           </div>
           <div onClick={() => saved()} className={classes.Save}>
             <p>Save</p>
-            <img src={savedImg} alt="Save" />
+            <BsBell size="2em" color="#4886ff" />
           </div>
         </div>
       </div>
