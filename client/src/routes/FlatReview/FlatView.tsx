@@ -8,8 +8,10 @@ import { GrRotateRight } from "react-icons/gr";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import BreadCrumbs from "../../components/BreadCrums/BreadCrums";
 import { useState } from "react";
-// import Calendar from "@lls/react-light-calendar";
-// import "@lls/react-light-calendar/dist/index.css";
+import DefaultSlide from "../../components/Slider/defaultSlide/defaultSlide";
+import Calendar from "@lls/react-light-calendar";
+import "@lls/react-light-calendar/dist/index.css"; // Default Style
+import Schedule from "../../components/Schedule/schedule";
 interface PropsInterface {
   location: {
     state: {
@@ -21,8 +23,37 @@ interface PropsInterface {
 
 function FlatView(props: PropsInterface) {
   const flat = props.location.state.flat;
-  const [current, setCurrent] = useState(0);
+  const date = new Date();
+  const [current, setCurrent] = useState<number>(0);
+  const [startDate, setDate] = useState<number>(date.getTime());
+  const [endDate, setEndDate] = useState<number>(
+    date.getTime() + 1000 * 60 * 60 * 24 * 2
+  );
+  const [openSchedule, setSchedule] = useState<boolean>(false);
+  const [toggleCalendar, setToggleCalendar] = useState<boolean>(false);
+  const onChange = (startDate: number, endDate: number): void => {
+    setDate(startDate);
 
+    setEndDate(endDate);
+  };
+
+  const changeCalendar = () => {
+    if (!toggleCalendar) {
+      setToggleCalendar(true);
+    } else {
+      setToggleCalendar(false);
+    }
+  };
+
+  const schedule = () => {
+    if (!openSchedule) {
+      setSchedule(true);
+    } else {
+      setSchedule(false);
+    }
+  };
+  console.log(startDate, " Start Date");
+  console.log(endDate, " END Date");
   const element1 = [
     flat.images[0],
     flat.images[1],
@@ -54,7 +85,6 @@ function FlatView(props: PropsInterface) {
     ultimateArray = [...ultimateArray, ...testArray];
   }
 
-  ultimateArray.map((item) => {});
   const length = ultimateArray.length;
 
   const nextSlide = () => {
@@ -68,7 +98,7 @@ function FlatView(props: PropsInterface) {
   if (!Array.isArray(ultimateArray) || ultimateArray.length <= 0) {
     return null;
   }
-  console.log(current);
+
   return (
     <div className={classes.FlatReview}>
       <div className={classes.FlatBox}>
@@ -98,40 +128,8 @@ function FlatView(props: PropsInterface) {
                   }
                 >
                   {index === current && (
-                    <div className={classes.Images}>
-                      <div className={classes.MainImage}>
-                        {item[0] === undefined ? (
-                          <img src="/no-photo.png" />
-                        ) : (
-                          <img src={item[0]} alt="Flat-other" />
-                        )}
-                      </div>
-                      <div className={classes.OtherImages}>
-                        <div className={classes.firstColumn}>
-                          {item[1] === undefined ? (
-                            <img src="/no-photo.png" />
-                          ) : (
-                            <img src={item[1]} alt="Flat-other" />
-                          )}
-                          {item[2] === undefined ? (
-                            <img src="/no-photo.png" />
-                          ) : (
-                            <img src={item[2]} alt="Flat-other" />
-                          )}
-                        </div>
-                        <div className={classes.secondColumn}>
-                          {item[3] === undefined ? (
-                            <img src="/no-photo.png" />
-                          ) : (
-                            <img src={item[3]} alt="Flat-other" />
-                          )}
-                          {item[4] === undefined ? (
-                            <img src="/no-photo.png" />
-                          ) : (
-                            <img src={item[4]} alt="Flat-other" />
-                          )}
-                        </div>
-                      </div>
+                    <div key={index} className={classes.Images}>
+                      <DefaultSlide images={flat.images} />
                     </div>
                   )}
                 </div>
@@ -147,10 +145,10 @@ function FlatView(props: PropsInterface) {
                 >
                   <div className={classes.Images2}>
                     {index === current &&
-                      item.map((photo: string) => {
+                      item.map((photo: string, index: string) => {
                         return (
-                          <div className={classes.imgBox}>
-                            <img src={photo} />
+                          <div key={index} className={classes.imgBox}>
+                            <img src={photo} alt="Flat" />
                           </div>
                         );
                       })}
@@ -220,9 +218,24 @@ function FlatView(props: PropsInterface) {
             </div>
           </div>
           <div className={classes.calendar}>
-            {/* <Calendar startDate={startDate} onChange={this.onChange} /> */}
-            Kalendorius
+            <button onClick={() => changeCalendar()}>Toggle Calendar</button>
+            {!toggleCalendar ? (
+              <Calendar
+                startDate={startDate}
+                endDate={endDate}
+                onChange={onChange}
+              />
+            ) : (
+              <Calendar startDate={startDate} onChange={onChange} />
+            )}
+
+            <button onClick={() => schedule()}>Check Availability</button>
           </div>
+        </div>
+        <div className={classes.Schedule}>
+          {openSchedule ? (
+            <Schedule date={startDate} endDate={endDate} />
+          ) : null}
         </div>
       </div>
     </div>

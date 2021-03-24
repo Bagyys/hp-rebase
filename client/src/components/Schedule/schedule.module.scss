@@ -1,0 +1,57 @@
+@import "../../styles/global.scss";
+
+.Schedule {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 5rem;
+
+  .tableContent {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    width: 1000px;
+    .TimeColumn {
+      top: 0;
+      left: 0;
+      background-color: red;
+      .Days {
+        font-size: $largeFontSize;
+        color: $lightGrey2;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      div {
+        border: 1px solid $lightGrey2;
+        border-bottom: none;
+        padding: 2rem;
+        &:last-child {
+          border-bottom: 1px solid $lightGrey2;
+        }
+        &:first-child {
+          border-top: none;
+        }
+      }
+    }
+    .Column {
+      .Days {
+        font-size: $largeFontSize;
+        color: $lightGrey2;
+        text-align: center;
+        white-space: nowrap;
+      }
+      div {
+        border: 1px solid $lightGrey2;
+        border-bottom: none;
+        padding: 2rem;
+        &:last-child {
+          border-bottom: 1px solid $lightGrey2;
+        }
+        &:first-child {
+          border-top: none;
+        }
+      }
+    }
+  }
+}
