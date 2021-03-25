@@ -37,6 +37,7 @@ export interface FlatInterface {
   isUtilitiesIncluded: boolean;
   isCreatedAt: string;
   images?: any;
+  occupiedTime: Array<string>;
 }
 
 function Flats() {
@@ -102,6 +103,10 @@ function Flats() {
       isLofts: true,
       isUtilitiesIncluded: true,
       isCreatedAt: "2/26/2021 2:28",
+      occupiedTime: [
+        "Fri Mar 26 2021 02:00:00 GMT+0200",
+        "Fri Mar 27 2021 02:00:00 GMT+0200",
+      ],
     },
     {
       id: 2,
@@ -136,6 +141,7 @@ function Flats() {
       isLofts: true,
       isUtilitiesIncluded: true,
       isCreatedAt: "9/26/2020 2:28",
+      occupiedTime: ["2021-03-26T10:02:00.000Z"],
     },
     {
       id: 3,
@@ -170,6 +176,7 @@ function Flats() {
       isLofts: true,
       isUtilitiesIncluded: true,
       isCreatedAt: "3/16/2021 2:28",
+      occupiedTime: ["2021-03-26T10:02:00.000Z"],
     },
     {
       id: 4,
@@ -204,6 +211,7 @@ function Flats() {
       isLofts: true,
       isUtilitiesIncluded: true,
       isCreatedAt: "2/16/2021 2:28",
+      occupiedTime: ["2021-03-26T10:02:00.000Z"],
     },
   ];
   return (

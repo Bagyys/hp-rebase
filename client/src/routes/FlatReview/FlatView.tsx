@@ -8,9 +8,10 @@ import { GrRotateRight } from "react-icons/gr";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import BreadCrumbs from "../../components/BreadCrums/BreadCrums";
 import { useState } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 import DefaultSlide from "../../components/Slider/defaultSlide/defaultSlide";
-import Calendar from "@lls/react-light-calendar";
-import "@lls/react-light-calendar/dist/index.css"; // Default Style
+
 import Schedule from "../../components/Schedule/schedule";
 interface PropsInterface {
   location: {
@@ -23,26 +24,15 @@ interface PropsInterface {
 
 function FlatView(props: PropsInterface) {
   const flat = props.location.state.flat;
-  const date = new Date();
+  const [date, setDate] = useState<any>(new Date());
   const [current, setCurrent] = useState<number>(0);
-  const [startDate, setDate] = useState<number>(date.getTime());
-  const [endDate, setEndDate] = useState<number>(
-    date.getTime() + 1000 * 60 * 60 * 24 * 2
-  );
+  const [toggleCalendar, setCalendar] = useState<boolean>(false);
   const [openSchedule, setSchedule] = useState<boolean>(false);
-  const [toggleCalendar, setToggleCalendar] = useState<boolean>(false);
-  const onChange = (startDate: number, endDate: number): void => {
-    setDate(startDate);
 
-    setEndDate(endDate);
-  };
+  const disabledDates = [new Date(2021, 2, 30), new Date(2021, 2, 29)];
 
-  const changeCalendar = () => {
-    if (!toggleCalendar) {
-      setToggleCalendar(true);
-    } else {
-      setToggleCalendar(false);
-    }
+  const onChange = (date: any) => {
+    setDate(date);
   };
 
   const schedule = () => {
@@ -52,8 +42,13 @@ function FlatView(props: PropsInterface) {
       setSchedule(false);
     }
   };
-  console.log(startDate, " Start Date");
-  console.log(endDate, " END Date");
+  const switchCalendar = () => {
+    if (!toggleCalendar) {
+      setCalendar(true);
+    } else {
+      setCalendar(false);
+    }
+  };
   const element1 = [
     flat.images[0],
     flat.images[1],
@@ -218,15 +213,22 @@ function FlatView(props: PropsInterface) {
             </div>
           </div>
           <div className={classes.calendar}>
-            <button onClick={() => changeCalendar()}>Toggle Calendar</button>
+            <button onClick={() => switchCalendar()}>Toggle Calendar</button>
             {!toggleCalendar ? (
               <Calendar
-                startDate={startDate}
-                endDate={endDate}
                 onChange={onChange}
+                value={date}
+                tileDisabled={({ date, view }) =>
+                  disabledDates.some(
+                    (disabledDate) =>
+                      date.getFullYear() === disabledDate.getFullYear() &&
+                      date.getMonth() === disabledDate.getMonth() &&
+                      date.getDate() === disabledDate.getDate()
+                  )
+                }
               />
             ) : (
-              <Calendar startDate={startDate} onChange={onChange} />
+              <Calendar onChange={onChange} value={date} selectRange={true} />
             )}
 
             <button onClick={() => schedule()}>Check Availability</button>
@@ -234,7 +236,12 @@ function FlatView(props: PropsInterface) {
         </div>
         <div className={classes.Schedule}>
           {openSchedule ? (
-            <Schedule date={startDate} endDate={endDate} />
+            <Schedule
+              date={date[0]}
+              endDate={date[1]}
+              occupiedTime={flat.occupiedTime}
+              calendarSwitcher={toggleCalendar}
+            />
           ) : null}
         </div>
       </div>
