@@ -5,8 +5,9 @@ import React from "react";
 interface scheduleInterface {
   date: number;
   endDate: number;
-  occupiedTime: Array<string>;
+  occupiedTime: Array<Date>;
   calendarSwitcher: boolean;
+  occupiedTimeByHour: any;
 }
 
 function Schedule({
@@ -14,215 +15,64 @@ function Schedule({
   endDate,
   occupiedTime,
   calendarSwitcher,
+  occupiedTimeByHour,
 }: scheduleInterface) {
   const todaysDate = moment(date).format("dddd MMM Do");
   const lastDay = moment(endDate).format("dddd MMM Do");
-  console.log(lastDay, "kokia last day");
-  const newDateObject = new Date(date);
-  const stringifiedDate = newDateObject.toString();
-  const getDatesBetweenDates = (startDate: any, endDate: any) => {
-    let dates: any = [];
-    //to avoid modifying the original date
-    const theDate = new Date(startDate);
-    while (theDate < endDate) {
-      dates = [...dates, new Date(theDate)];
-      theDate.setDate(theDate.getDate() + 1);
+
+  const startOFF = new Date(date);
+  let i;
+  let occupationArray = [];
+  let freeHours = [];
+  for (i = 0; i < 24; i++) {
+    const tableTime = new Date(startOFF.setHours(i));
+    const isOccupiedOrNot = occupiedTimeByHour.some(
+      (hours: any) => tableTime.getTime() === hours.getTime()
+    );
+    occupationArray.push(isOccupiedOrNot);
+    if (!isOccupiedOrNot) {
+      freeHours.push(tableTime);
     }
-    return dates;
-  };
-  const daysBetween = getDatesBetweenDates(date, endDate);
-  daysBetween.shift();
-  const testFunction = (hour: any) => {
-    alert(todaysDate + hour);
-  };
-  // console.log(occupiedTime, "Occupied Time");
-  // console.log(stringifiedDate, "Fixed Time Time");
+  }
+  console.log(freeHours, "FREE HOURS");
+  const tableHours = [
+    "12AM",
+    "1AM",
+    "2AM",
+    "3AM",
+    "4AM",
+    "5AM",
+    "6AM",
+    "7AM",
+    "8AM",
+    "9AM",
+    "10AM",
+    "11AM",
+    "12PM",
+    "1PM",
+    "2PM",
+    "3PM",
+    "4PM",
+    "5PM",
+    "6PM",
+    "7PM",
+    "8PM",
+    "9PM",
+    "10PM",
+    "11PM",
+  ];
+  console.log(occupationArray, " pries return");
   return (
     <div className={classes.Schedule}>
       {calendarSwitcher ? (
-        <div className={classes.tableContent}>
-          <div className={classes.TimeColumn}>
-            <div className={classes.Days} style={{ visibility: "hidden" }}>
-              Monday
-            </div>
-            <div>12 AM</div>
-            <div>1 AM</div>
-            <div>2 AM</div>
-            <div>3 AM</div>
-            <div>4 AM</div>
-            <div>5 AM</div>
-            <div>6 AM</div>
-            <div>7 AM</div>
-            <div>8 AM</div>
-            <div>9 AM</div>
-            <div>10 AM</div>
-            <div>11 AM</div>
-            <div>12 PM</div>
-            <div>1 PM</div>
-            <div>2 PM</div>
-            <div>3 PM</div>
-            <div>4 PM</div>
-            <div>5 PM</div>
-            <div>6 PM</div>
-            <div>7 PM</div>
-            <div>8 PM</div>
-            <div>9 PM</div>
-            <div>10 PM</div>
-            <div>11 PM</div>
-          </div>
-
+        <div className={classes.DailyTable}>
+          <h2>From</h2>
           <div className={classes.Column}>
             <div className={classes.Days}>{todaysDate}</div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
           </div>
-
+          <h2>Until</h2>
           <div className={classes.Column}>
-            <div className={classes.Days}>
-              {lastDay !== "Invalid date" ? lastDay : "Last day not selected"}
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
-            <div>
-              <BsFillHouseDoorFill size="2em" color="#4886ff" />
-            </div>
+            <div className={classes.Days}>{lastDay}</div>
           </div>
         </div>
       ) : (
@@ -232,189 +82,45 @@ function Schedule({
           </h2>
           <div className={classes.tableContent}>
             <div className={classes.TimeColumn}>
-              <div>12 AM</div>
-              <div>1 AM</div>
-              <div>2 AM</div>
-              <div>3 AM</div>
-              <div>4 AM</div>
-              <div>5 AM</div>
-              <div>6 AM</div>
-              <div>7 AM</div>
-              <div>8 AM</div>
-              <div>9 AM</div>
-              <div>10 AM</div>
-              <div>11 AM</div>
-              <div>12 PM</div>
-              <div>1 PM</div>
-              <div>2 PM</div>
-              <div>3 PM</div>
-              <div>4 PM</div>
-              <div>5 PM</div>
-              <div>6 PM</div>
-              <div>7 PM</div>
-              <div>8 PM</div>
-              <div>9 PM</div>
-              <div>10 PM</div>
-              <div>11 PM</div>
+              {tableHours.map((hour) => {
+                return <div>{hour}</div>;
+              })}
             </div>
 
             <div className={classes.Column}>
-              <div onClick={() => testFunction("12AM")}>
-                {occupiedTime.map((time) => {
-                  // console.log(time.toString(), " koks laikas mape");
-                  // console.log(stringifiedDate, " Stringified time");
-                  if (stringifiedDate === time) {
-                    return <BsFillHouseDoorFill size="2em" color="red" />;
-                  } else {
-                    return (
+              {occupationArray.map((item) => {
+                if (item) {
+                  return (
+                    <div>
                       <span>
-                        <BsFillHouseDoorFill size="2em" color="#4886ff" />
+                        <BsFillHouseDoorFill size="2em" color="red" />
+                        <span className={classes.tooltipText}>
+                          Apartment is not available on this time
+                        </span>
+                      </span>
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div>
+                      <span>
+                        <BsFillHouseDoorFill size="2em" color="4886ff" />
                         <span className={classes.tooltipText}>
                           Apartment is available on this time
                         </span>
                       </span>
-                    );
-                  }
+                    </div>
+                  );
+                }
+              })}
+            </div>
+            <div className={classes.orderBox}>
+              <h2>Order available time</h2>
+              <ul>
+                {freeHours.map((time) => {
+                  return <li>{time.toString()}</li>;
                 })}
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
-              <div>
-                <BsFillHouseDoorFill size="2em" color="#4886ff" />
-                <span className={classes.tooltipText}>
-                  Apartment is available on this time
-                </span>
-              </div>
+              </ul>
             </div>
           </div>
         </div>

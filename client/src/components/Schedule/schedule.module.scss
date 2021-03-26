@@ -5,6 +5,24 @@
   margin: 0 auto;
   margin-top: 5rem;
 
+  .DailyTable {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 auto;
+    h2 {
+      font-size: $largeFontSize2;
+      color: $black2;
+    }
+    .Column {
+      border: 1px solid $black2;
+      padding: 1rem;
+      font-size: $largeFontSize;
+      color: $lightGrey2;
+      white-space: nowrap;
+    }
+  }
+
   .HourlyTitle {
     text-align: center;
     font-size: $largeFontSize;

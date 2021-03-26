@@ -37,7 +37,8 @@ export interface FlatInterface {
   isUtilitiesIncluded: boolean;
   isCreatedAt: string;
   images?: any;
-  occupiedTime: Array<string>;
+  occupiedTime: Array<Date>;
+  occupiedByHour: any;
 }
 
 function Flats() {
@@ -104,9 +105,11 @@ function Flats() {
       isUtilitiesIncluded: true,
       isCreatedAt: "2/26/2021 2:28",
       occupiedTime: [
-        "Fri Mar 26 2021 02:00:00 GMT+0200",
-        "Fri Mar 27 2021 02:00:00 GMT+0200",
+        new Date("March 31, 2021"),
+        new Date("April 6, 2021"),
+        new Date("April 4, 2021"),
       ],
+      occupiedByHour : [new Date("March 27, 2021 18:00"),new Date("March 29, 2021 12:00"),new Date("March 29, 2021 14:00"),new Date("March 29, 2021 15:00"),new Date("March 30, 2021 00:00"),new Date("March 30, 2021 02:00"),new Date("March 30, 2021 04:00")]
     },
     {
       id: 2,
@@ -141,7 +144,12 @@ function Flats() {
       isLofts: true,
       isUtilitiesIncluded: true,
       isCreatedAt: "9/26/2020 2:28",
-      occupiedTime: ["2021-03-26T10:02:00.000Z"],
+      occupiedTime: [
+        new Date("March 29, 2021"),
+        new Date("March 30, 2021"),
+        new Date("April 12, 2021"),
+      ],
+       occupiedByHour : [new Date("March 27, 2021 19:00"),new Date("March 29, 2021 12:00"),new Date("March 29, 2021 14:00"),new Date("March 29, 2021 15:00"),new Date("March 30, 2021 00:00"),new Date("March 30, 2021 02:00"),new Date("March 30, 2021 04:00")]
     },
     {
       id: 3,
@@ -176,7 +184,12 @@ function Flats() {
       isLofts: true,
       isUtilitiesIncluded: true,
       isCreatedAt: "3/16/2021 2:28",
-      occupiedTime: ["2021-03-26T10:02:00.000Z"],
+      occupiedTime: [
+        new Date("March 29, 2021"),
+        new Date("March 30, 2021"),
+        new Date("April 12, 2021"),
+      ],
+       occupiedByHour : [new Date("March 27, 2021 18:00"),new Date("March 29, 2021 12:00"),new Date("March 29, 2021 14:00"),new Date("March 29, 2021 15:00"),new Date("March 30, 2021 00:00"),new Date("March 30, 2021 02:00"),new Date("March 30, 2021 04:00")]
     },
     {
       id: 4,
@@ -211,7 +224,12 @@ function Flats() {
       isLofts: true,
       isUtilitiesIncluded: true,
       isCreatedAt: "2/16/2021 2:28",
-      occupiedTime: ["2021-03-26T10:02:00.000Z"],
+      occupiedTime: [
+        new Date("March 29, 2021"),
+        new Date("March 30, 2021"),
+        new Date("April 4, 2021"),
+      ],
+       occupiedByHour : [new Date("March 27, 2021 18:00"),new Date("March 29, 2021 12:00"),new Date("March 29, 2021 14:00"),new Date("March 29, 2021 15:00"),new Date("March 30, 2021 00:00"),new Date("March 30, 2021 02:00"),new Date("March 30, 2021 04:00")]
     },
   ];
   return (

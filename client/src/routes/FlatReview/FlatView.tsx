@@ -28,8 +28,13 @@ function FlatView(props: PropsInterface) {
   const [current, setCurrent] = useState<number>(0);
   const [toggleCalendar, setCalendar] = useState<boolean>(false);
   const [openSchedule, setSchedule] = useState<boolean>(false);
-
-  const disabledDates = [new Date(2021, 2, 30), new Date(2021, 2, 29)];
+  let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
+  console.log(flat, "flat");
+  const disabledDates = [
+    new Date("March 29, 2021"),
+    new Date("March 30, 2021"),
+    new Date("April 12, 2021"),
+  ];
 
   const onChange = (date: any) => {
     setDate(date);
@@ -213,22 +218,49 @@ function FlatView(props: PropsInterface) {
             </div>
           </div>
           <div className={classes.calendar}>
-            <button onClick={() => switchCalendar()}>Toggle Calendar</button>
-            {!toggleCalendar ? (
-              <Calendar
-                onChange={onChange}
-                value={date}
-                tileDisabled={({ date, view }) =>
-                  disabledDates.some(
-                    (disabledDate) =>
-                      date.getFullYear() === disabledDate.getFullYear() &&
-                      date.getMonth() === disabledDate.getMonth() &&
-                      date.getDate() === disabledDate.getDate()
-                  )
-                }
-              />
+            <button onClick={() => switchCalendar()}>Switch Calendar</button>
+            {toggleCalendar ? (
+              <div>
+                <h2>Daily Calendar</h2>
+                <Calendar
+                  onChange={onChange}
+                  value={date}
+                  selectRange={true}
+                  tileDisabled={({ date }) =>
+                    date < yesterday ||
+                    flat.occupiedTime.some(
+                      (time) =>
+                        date.getFullYear() === time.getFullYear() &&
+                        date.getMonth() === time.getMonth() &&
+                        date.getDate() === time.getDate()
+                    )
+                    ||
+                    flat.occupiedByHour.some(
+                      (hour: any) =>
+                        date.getFullYear() === hour.getFullYear() &&
+                        date.getMonth() === hour.getMonth() &&
+                        date.getDate() === hour.getDate()
+                    )
+                  }
+                />
+              </div>
             ) : (
-              <Calendar onChange={onChange} value={date} selectRange={true} />
+              <div>
+                <h2>Hourly calendar</h2>
+                <Calendar
+                  onChange={onChange}
+                  value={date}
+                  tileDisabled={({ date }) =>
+                    date < yesterday ||
+                    flat.occupiedTime.some(
+                      (time) =>
+                        date.getFullYear() === time.getFullYear() &&
+                        date.getMonth() === time.getMonth() &&
+                        date.getDate() === time.getDate()
+                    )
+                  }
+                />
+              </div>
             )}
 
             <button onClick={() => schedule()}>Check Availability</button>
@@ -237,9 +269,10 @@ function FlatView(props: PropsInterface) {
         <div className={classes.Schedule}>
           {openSchedule ? (
             <Schedule
-              date={date[0]}
+              date={toggleCalendar ? date[0] : date}
               endDate={date[1]}
               occupiedTime={flat.occupiedTime}
+              occupiedTimeByHour={flat.occupiedByHour}
               calendarSwitcher={toggleCalendar}
             />
           ) : null}
