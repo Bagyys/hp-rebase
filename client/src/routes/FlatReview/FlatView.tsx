@@ -9,6 +9,7 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import BreadCrumbs from "../../components/BreadCrums/BreadCrums";
 import { useState } from "react";
 import Calendar from "react-calendar";
+import "./calendar.scss";
 import "react-calendar/dist/Calendar.css";
 import DefaultSlide from "../../components/Slider/defaultSlide/defaultSlide";
 
@@ -29,12 +30,6 @@ function FlatView(props: PropsInterface) {
   const [toggleCalendar, setCalendar] = useState<boolean>(false);
   const [openSchedule, setSchedule] = useState<boolean>(false);
   let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
-  console.log(flat, "flat");
-  const disabledDates = [
-    new Date("March 29, 2021"),
-    new Date("March 30, 2021"),
-    new Date("April 12, 2021"),
-  ];
 
   const onChange = (date: any) => {
     setDate(date);
@@ -233,8 +228,7 @@ function FlatView(props: PropsInterface) {
                         date.getFullYear() === time.getFullYear() &&
                         date.getMonth() === time.getMonth() &&
                         date.getDate() === time.getDate()
-                    )
-                    ||
+                    ) ||
                     flat.occupiedByHour.some(
                       (hour: any) =>
                         date.getFullYear() === hour.getFullYear() &&

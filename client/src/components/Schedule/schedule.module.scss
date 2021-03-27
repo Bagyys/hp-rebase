@@ -14,21 +14,34 @@
       font-size: $largeFontSize2;
       color: $black2;
     }
-    .Column {
-      border: 1px solid $black2;
-      padding: 1rem;
+  }
+  .HourlyTable {
+    .HourlyTitle {
+      text-align: center;
       font-size: $largeFontSize;
       color: $lightGrey2;
-      white-space: nowrap;
+      margin-bottom: 1rem;
+    }
+
+    .bookingHours {
+      padding: 1rem;
+      h2 {
+        font-size: $largeFontSize;
+        color: $lightGrey2;
+      }
+      ul {
+        text-align: left;
+        margin-top: 1rem;
+        li {
+          padding: 1rem;
+          font-size: $largeFontSize;
+          color: $lightGrey2;
+          list-style: square inside;
+        }
+      }
     }
   }
 
-  .HourlyTitle {
-    text-align: center;
-    font-size: $largeFontSize;
-    color: $lightGrey2;
-    margin-bottom: 1rem;
-  }
   .tableContent {
     display: flex;
     justify-content: center;
@@ -36,6 +49,8 @@
 
     .TimeColumn {
       width: 10%;
+      .Column {
+      }
       .Days {
         font-size: $largeFontSize;
         color: $lightGrey2;
@@ -60,11 +75,12 @@
     }
     .Column {
       width: 15%;
-      .Days {
-        font-size: $largeFontSize;
-        color: $lightGrey2;
-        text-align: center;
-        white-space: nowrap;
+      .disabled {
+        pointer-events: none;
+
+        /* for "disabled" effect */
+        opacity: 0.5;
+        background: #ccc;
       }
       div {
         height: 1rem;

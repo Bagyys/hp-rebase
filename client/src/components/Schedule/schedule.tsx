@@ -1,7 +1,11 @@
 import classes from "./schedule.module.scss";
 import moment from "moment";
 import { BsFillHouseDoorFill } from "react-icons/bs";
-import React from "react";
+import { useState } from "react";
+import { bookHours, removeHours } from "../../store/actions/bookingActions";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+
 interface scheduleInterface {
   date: number;
   endDate: number;
@@ -17,24 +21,35 @@ function Schedule({
   calendarSwitcher,
   occupiedTimeByHour,
 }: scheduleInterface) {
+  const booking = useSelector((state: any) => state.booking);
+  const dispatch = useDispatch();
   const todaysDate = moment(date).format("dddd MMM Do");
   const lastDay = moment(endDate).format("dddd MMM Do");
-
+  const [removalArray, setRemovalArray] = useState<Array<Date>>([]);
   const startOFF = new Date(date);
   let i;
   let occupationArray = [];
-  let freeHours = [];
   for (i = 0; i < 24; i++) {
-    const tableTime = new Date(startOFF.setHours(i));
+    const tableTime = new Date(startOFF.setHours(i, 0, 0));
     const isOccupiedOrNot = occupiedTimeByHour.some(
       (hours: any) => tableTime.getTime() === hours.getTime()
     );
-    occupationArray.push(isOccupiedOrNot);
-    if (!isOccupiedOrNot) {
-      freeHours.push(tableTime);
-    }
+    const timeObject = {
+      isOccupiedOrNot,
+      tableTime,
+    };
+
+    occupationArray.push(timeObject);
   }
-  console.log(freeHours, "FREE HOURS");
+  let bookingHoursInState = booking.hoursForBooking;
+  useEffect(() => {
+    setRemovalArray(bookingHoursInState);
+  }, [bookingHoursInState]);
+  bookingHoursInState.sort(function (a: any, b: any) {
+    var dateA: any = new Date(a);
+    var dateB: any = new Date(b);
+    return dateA - dateB;
+  });
   const tableHours = [
     "12AM",
     "1AM",
@@ -61,7 +76,17 @@ function Schedule({
     "10PM",
     "11PM",
   ];
-  console.log(occupationArray, " pries return");
+  const addToList = (hour: Date) => {
+    dispatch(bookHours(hour));
+  };
+  const deleteHour = (hour: Date) => {
+    const index = removalArray.indexOf(hour);
+    if (index > -1) {
+      removalArray.splice(index, 1);
+    }
+    dispatch(removeHours(removalArray));
+  };
+  console.log(removalArray, " Kokia ARRAY");
   return (
     <div className={classes.Schedule}>
       {calendarSwitcher ? (
@@ -82,16 +107,16 @@ function Schedule({
           </h2>
           <div className={classes.tableContent}>
             <div className={classes.TimeColumn}>
-              {tableHours.map((hour) => {
-                return <div>{hour}</div>;
+              {tableHours.map((hour, index) => {
+                return <div key={index}>{hour}</div>;
               })}
             </div>
 
             <div className={classes.Column}>
-              {occupationArray.map((item) => {
-                if (item) {
+              {occupationArray.map((item, index) => {
+                if (item.isOccupiedOrNot) {
                   return (
-                    <div>
+                    <div key={index}>
                       <span>
                         <BsFillHouseDoorFill size="2em" color="red" />
                         <span className={classes.tooltipText}>
@@ -101,10 +126,19 @@ function Schedule({
                     </div>
                   );
                 } else {
+                  let isAlreadyTaken = bookingHoursInState.some(
+                    (timeTaken: Date) =>
+                      item.tableTime.getTime() === timeTaken.getTime()
+                  );
                   return (
-                    <div>
+                    <div className={isAlreadyTaken ? classes.disabled : ""}>
                       <span>
-                        <BsFillHouseDoorFill size="2em" color="4886ff" />
+                        <BsFillHouseDoorFill
+                          size="2em"
+                          color="4886ff"
+                          onClick={() => addToList(item.tableTime)}
+                          style={{ cursor: "pointer" }}
+                        />
                         <span className={classes.tooltipText}>
                           Apartment is available on this time
                         </span>
@@ -114,13 +148,20 @@ function Schedule({
                 }
               })}
             </div>
-            <div className={classes.orderBox}>
-              <h2>Order available time</h2>
+            <div className={classes.bookingHours}>
+              <h2>Selected hours for booking :</h2>
               <ul>
-                {freeHours.map((time) => {
-                  return <li>{time.toString()}</li>;
+                <h2>{todaysDate}</h2>
+                {bookingHoursInState.map((hour: Date, index: string) => {
+                  return (
+                    <li key={index}>
+                      {moment(hour).format("LT")}
+                      <button onClick={() => deleteHour(hour)}>X</button>
+                    </li>
+                  );
                 })}
               </ul>
+              <button>Book Hours</button>
             </div>
           </div>
         </div>
