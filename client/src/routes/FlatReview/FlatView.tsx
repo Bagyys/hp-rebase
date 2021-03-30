@@ -10,7 +10,7 @@ import BreadCrumbs from "../../components/BreadCrums/BreadCrums";
 import { useState } from "react";
 import Calendar from "react-calendar";
 import "./calendar.scss";
-import "react-calendar/dist/Calendar.css";
+// import "react-calendar/dist/Calendar.css";
 import DefaultSlide from "../../components/Slider/defaultSlide/defaultSlide";
 
 import Schedule from "../../components/Schedule/schedule";
@@ -25,12 +25,24 @@ interface PropsInterface {
 
 function FlatView(props: PropsInterface) {
   const flat = props.location.state.flat;
-  const [date, setDate] = useState<any>(new Date());
+  const [date, setDate] = useState<any>("");
   const [current, setCurrent] = useState<number>(0);
   const [toggleCalendar, setCalendar] = useState<boolean>(false);
   const [openSchedule, setSchedule] = useState<boolean>(false);
   let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
-
+  const getDatesBetweenDates = (startDate: any, endDate: any) => {
+    let dates: any = [];
+    //to avoid modifying the original date
+    const theDate = new Date(startDate);
+    while (theDate < endDate) {
+      dates = [...dates, new Date(theDate)];
+      theDate.setDate(theDate.getDate() + 1);
+    }
+    return dates;
+  };
+  const daysBetween = getDatesBetweenDates(date[0], date[1]);
+  daysBetween.shift();
+  console.log(daysBetween, " Days Between");
   const onChange = (date: any) => {
     setDate(date);
   };
@@ -93,7 +105,13 @@ function FlatView(props: PropsInterface) {
   if (!Array.isArray(ultimateArray) || ultimateArray.length <= 0) {
     return null;
   }
-
+  const hourlyCheckArray: any = [];
+  flat.occupiedTime.map((item: any) => {
+    if (item.isWholeDayRented) {
+      hourlyCheckArray.push(item.date);
+    }
+  });
+  console.log(date.length, "Date");
   return (
     <div className={classes.FlatReview}>
       <div className={classes.FlatBox}>
@@ -213,41 +231,45 @@ function FlatView(props: PropsInterface) {
             </div>
           </div>
           <div className={classes.calendar}>
-            <button onClick={() => switchCalendar()}>Switch Calendar</button>
+            <div className={classes.switcher}>
+              <h3>Daily Calendar</h3>
+              <label className={classes.switch}>
+                <input
+                  onClick={() => switchCalendar()}
+                  type="checkbox"
+                  checked
+                />
+                <span className={`${classes.slider} ${classes.round}`}></span>
+              </label>
+              <h3>Hourly Calendar</h3>
+            </div>
+
             {toggleCalendar ? (
               <div>
-                <h2>Daily Calendar</h2>
                 <Calendar
                   onChange={onChange}
-                  value={date}
+                  // value={date}
                   selectRange={true}
                   tileDisabled={({ date }) =>
                     date < yesterday ||
-                    flat.occupiedTime.some(
-                      (time) =>
+                    hourlyCheckArray.some(
+                      (time: any) =>
                         date.getFullYear() === time.getFullYear() &&
                         date.getMonth() === time.getMonth() &&
                         date.getDate() === time.getDate()
-                    ) ||
-                    flat.occupiedByHour.some(
-                      (hour: any) =>
-                        date.getFullYear() === hour.getFullYear() &&
-                        date.getMonth() === hour.getMonth() &&
-                        date.getDate() === hour.getDate()
                     )
                   }
                 />
               </div>
             ) : (
               <div>
-                <h2>Hourly calendar</h2>
                 <Calendar
                   onChange={onChange}
                   value={date}
                   tileDisabled={({ date }) =>
                     date < yesterday ||
-                    flat.occupiedTime.some(
-                      (time) =>
+                    hourlyCheckArray.some(
+                      (time: any) =>
                         date.getFullYear() === time.getFullYear() &&
                         date.getMonth() === time.getMonth() &&
                         date.getDate() === time.getDate()

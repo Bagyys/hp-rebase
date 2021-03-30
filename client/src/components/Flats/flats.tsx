@@ -37,8 +37,8 @@ export interface FlatInterface {
   isUtilitiesIncluded: boolean;
   isCreatedAt: string;
   images?: any;
-  occupiedTime: Array<Date>;
-  occupiedByHour: any;
+  occupiedTime: any;
+  occupiedByHour?: any;
 }
 
 function Flats() {
@@ -105,11 +105,43 @@ function Flats() {
       isUtilitiesIncluded: true,
       isCreatedAt: "2/26/2021 2:28",
       occupiedTime: [
-        new Date("March 31, 2021"),
-        new Date("April 6, 2021"),
-        new Date("April 4, 2021"),
+        {
+          date: new Date("March 30, 2021 00:00"),
+          isRented: false,
+          isWholeDayRented: false,
+          rentedHours: [
+            new Date("March 30, 2021 00:00"),
+            new Date("March 30, 2021 01:00"),
+            new Date("March 30, 2021 02:00"),
+          ],
+        },
+        {
+          date: new Date("March 31, 2021 00:00"),
+          isRented: true,
+          isWholeDayRented: true,
+          rentedHours: [],
+        },
+        {
+          date: new Date("April 1, 2021 00:00"),
+          isRented: true,
+          isWholeDayRented: false,
+          rentedHours: [
+            new Date("April 1, 2021 00:00"),
+            new Date("April 1, 2021 01:00"),
+            new Date("April 1, 2021 02:00"),
+            new Date("April 1, 2021 03:00"),
+          ],
+        },
       ],
-      occupiedByHour : [new Date("March 27, 2021 18:00"),new Date("March 29, 2021 12:00"),new Date("March 29, 2021 14:00"),new Date("March 29, 2021 15:00"),new Date("March 30, 2021 00:00"),new Date("March 30, 2021 02:00"),new Date("March 30, 2021 04:00")]
+      occupiedByHour: [
+        new Date("March 29, 2021 18:00"),
+        new Date("March 29, 2021 12:00"),
+        new Date("March 29, 2021 14:00"),
+        new Date("March 29, 2021 15:00"),
+        new Date("March 30, 2021 00:00"),
+        new Date("March 30, 2021 02:00"),
+        new Date("March 30, 2021 04:00"),
+      ],
     },
     {
       id: 2,
@@ -149,7 +181,15 @@ function Flats() {
         new Date("March 30, 2021"),
         new Date("April 12, 2021"),
       ],
-       occupiedByHour : [new Date("March 27, 2021 19:00"),new Date("March 29, 2021 12:00"),new Date("March 29, 2021 14:00"),new Date("March 29, 2021 15:00"),new Date("March 30, 2021 00:00"),new Date("March 30, 2021 02:00"),new Date("March 30, 2021 04:00")]
+      occupiedByHour: [
+        new Date("March 27, 2021 19:00"),
+        new Date("March 29, 2021 12:00"),
+        new Date("March 29, 2021 14:00"),
+        new Date("March 29, 2021 15:00"),
+        new Date("March 30, 2021 00:00"),
+        new Date("March 30, 2021 02:00"),
+        new Date("March 30, 2021 04:00"),
+      ],
     },
     {
       id: 3,
@@ -189,7 +229,15 @@ function Flats() {
         new Date("March 30, 2021"),
         new Date("April 12, 2021"),
       ],
-       occupiedByHour : [new Date("March 27, 2021 18:00"),new Date("March 29, 2021 12:00"),new Date("March 29, 2021 14:00"),new Date("March 29, 2021 15:00"),new Date("March 30, 2021 00:00"),new Date("March 30, 2021 02:00"),new Date("March 30, 2021 04:00")]
+      occupiedByHour: [
+        new Date("March 27, 2021 18:00"),
+        new Date("March 29, 2021 12:00"),
+        new Date("March 29, 2021 14:00"),
+        new Date("March 29, 2021 15:00"),
+        new Date("March 30, 2021 00:00"),
+        new Date("March 30, 2021 02:00"),
+        new Date("March 30, 2021 04:00"),
+      ],
     },
     {
       id: 4,
@@ -229,7 +277,15 @@ function Flats() {
         new Date("March 30, 2021"),
         new Date("April 4, 2021"),
       ],
-       occupiedByHour : [new Date("March 27, 2021 18:00"),new Date("March 29, 2021 12:00"),new Date("March 29, 2021 14:00"),new Date("March 29, 2021 15:00"),new Date("March 30, 2021 00:00"),new Date("March 30, 2021 02:00"),new Date("March 30, 2021 04:00")]
+      occupiedByHour: [
+        new Date("March 27, 2021 18:00"),
+        new Date("March 29, 2021 12:00"),
+        new Date("March 29, 2021 14:00"),
+        new Date("March 29, 2021 15:00"),
+        new Date("March 30, 2021 00:00"),
+        new Date("March 30, 2021 02:00"),
+        new Date("March 30, 2021 04:00"),
+      ],
     },
   ];
   return (
