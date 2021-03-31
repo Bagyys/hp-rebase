@@ -329,6 +329,17 @@ function Flats() {
               <div className={classes.flatContent}>
                 <div className={classes.flatImg}>
                   <Slider slides={flat.images} />
+                  <button className={classes.arrowLeft}>
+                    <img src={arrowLeft} alt="arrowRight" />
+                  </button>
+                  <img
+                    className={classes.MainImage}
+                    src={flat.mainImage}
+                    alt="Main-Flat-Photo"
+                  />
+                  <button className={classes.arrowRight}>
+                    <img src={arrowRight} alt="arrowRight" />
+                  </button>
                 </div>
                 <div className={classes.rightSide}>
                   <div className={classes.top}>

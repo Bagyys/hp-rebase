@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import doorReducer from "./doorsReducer";
+import lockReducer from "./lockReducer";
 import { routerReducer } from "react-router-redux";
 import orderReducer from "./bookingReducer";
 import bookingReducer from "./bookingReducer";
 const rootReducer = combineReducers({
-  doors: doorReducer,
+  lock: lockReducer,
   router: routerReducer,
   booking: bookingReducer,
 });
