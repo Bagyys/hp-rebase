@@ -40,9 +40,8 @@ function FlatView(props: PropsInterface) {
     }
     return dates;
   };
-  const daysBetween = getDatesBetweenDates(date[0], date[1]);
-  daysBetween.shift();
-  console.log(daysBetween, " Days Between");
+  // const daysBetween = getDatesBetweenDates(date[0], date[1]);
+
   const onChange = (date: any) => {
     setDate(date);
   };
@@ -248,7 +247,7 @@ function FlatView(props: PropsInterface) {
               <div>
                 <Calendar
                   onChange={onChange}
-                  // value={date}
+                  value={date}
                   selectRange={true}
                   tileDisabled={({ date }) =>
                     date < yesterday ||
