@@ -331,6 +331,7 @@ function Flats() {
                   <Slider slides={flat.images} />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <button className={classes.arrowLeft}>
                     <img src={arrowLeft} alt="arrowRight" />
                   </button>
@@ -346,6 +347,8 @@ function Flats() {
 >>>>>>> e97978a (Combine 12 coomits test)
 =======
 >>>>>>> ffe388c (Combine with reset soft test)
+=======
+>>>>>>> 3fef4a6 (Combine commits test rebase)
                 </div>
                 <div className={classes.rightSide}>
                   <div className={classes.top}>
