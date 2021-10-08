@@ -12,10 +12,33 @@
     margin: 0 auto;
     height: 90vh;
   }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 991278a (controllers and actions to get all locks and delete a lock. open and reset updated)
+>>>>>>> 3932397
   .Locks {
     display: block;
     h1 {
       font-size: 35px;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  button{
+    background-color: blue;
+    color: white;
+    margin: 10px;
+    padding: 5px 10px;
+    &:disabled{
+      background-color: gray;
+      cursor: not-allowed;
+>>>>>>> a4143a5 (algorithm updates front to back)
+=======
+>>>>>>> 991278a (controllers and actions to get all locks and delete a lock. open and reset updated)
+>>>>>>> 3932397
     }
   }
 }

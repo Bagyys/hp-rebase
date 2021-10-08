@@ -18,6 +18,7 @@
     "moment": "^2.29.1",
     "node-sass": "^5.0.0",
     "react": "^17.0.1",
+<<<<<<< HEAD
     "react-calendar": "^3.3.1",
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -36,6 +37,13 @@
 =======
     "react-addons-update": "^15.6.3",
 >>>>>>> 00bce46
+=======
+<<<<<<< HEAD
+    "react-calendar": "^3.3.1",
+=======
+>>>>>>> 991278a (controllers and actions to get all locks and delete a lock. open and reset updated)
+    "react-addons-update": "^15.6.3",
+>>>>>>> 3932397
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",
     "react-modal": "^3.12.1",
@@ -74,6 +82,7 @@
     ]
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@types/react-calendar": "^3.1.4",
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -92,6 +101,13 @@
 =======
     "@types/react-addons-update": "^0.14.20",
 >>>>>>> 00bce46
+=======
+<<<<<<< HEAD
+    "@types/react-calendar": "^3.1.4",
+=======
+>>>>>>> 991278a (controllers and actions to get all locks and delete a lock. open and reset updated)
+    "@types/react-addons-update": "^0.14.20",
+>>>>>>> 3932397
     "@types/react-modal": "^3.12.0",
     "@types/react-redux": "^7.1.12",
     "@types/react-router-dom": "^5.1.6",

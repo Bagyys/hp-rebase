@@ -334,8 +334,11 @@ function Flats() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 00bce46
+=======
+>>>>>>> 3932397
                   <button className={classes.arrowLeft}>
                     <img src={arrowLeft} alt="arrowRight" />
                   </button>
@@ -348,6 +351,7 @@ function Flats() {
                     <img src={arrowRight} alt="arrowRight" />
                   </button>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e97978a (Combine 12 coomits test)
 =======
@@ -358,6 +362,8 @@ function Flats() {
 >>>>>>> e8be8ec
 =======
 >>>>>>> 00bce46
+=======
+>>>>>>> 3932397
                 </div>
                 <div className={classes.rightSide}>
                   <div className={classes.top}>

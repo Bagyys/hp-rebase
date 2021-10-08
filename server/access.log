@@ -461,6 +461,13 @@
 ::1 - - [16/Mar/2021:11:16:38 +0000] "PUT /door/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=1&n3=0&o1=0&o2=1&o3=0&e=0 HTTP/1.1" 200 112
 ::ffff:127.0.0.1 - - [16/Mar/2021:11:19:39 +0000] "PUT /openLock/?h=A3%nm*Wb&id=Lg18299RHS10MxSh&o1=1 HTTP/1.1" 200 350
 ::ffff:127.0.0.1 - - [16/Mar/2021:11:19:44 +0000] "PUT /reset/?h=A3%nm*Wb&id=Lg18299RHS10MxSh HTTP/1.1" 200 404
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 097b98d (updated lockModel and  controllers folder structure and created new controller addLock)
+>>>>>>> 3932397
 ::1 - - [17/Mar/2021:05:47:57 +0000] "PUT /door/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=0&n3=0&o1=0&o2=0&o3=0&e=0 HTTP/1.1" 200 120
 ::ffff:127.0.0.1 - - [17/Mar/2021:05:48:39 +0000] "PUT /openLock/?h=A3%nm*Wb&id=Lg18299RHS10MxSh&o1=1 HTTP/1.1" 200 1054
 ::1 - - [17/Mar/2021:05:48:48 +0000] "PUT /door/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=1&n3=0&o1=1&o2=0&o3=0&e=0 HTTP/1.1" 200 120
@@ -481,6 +488,13 @@
 ::1 - - [17/Mar/2021:08:36:15 +0000] "PUT /lock/add/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=0&i2=0&i3=0&i4=0&i5=0&i6=0&i7=0&i8=0&i9=0&n1=0&n2=0&n3=0&o1=0&o2=0&o3=0&e=0 HTTP/1.1" 500 70
 ::1 - - [17/Mar/2021:08:36:42 +0000] "PUT /lock/add/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=0&i2=0&i3=0&i4=0&i5=0&i6=0&i7=0&i8=0&i9=0&n1=0&n2=0&n3=0&o1=0&o2=0&o3=0&e=0 HTTP/1.1" 200 128
 ::1 - - [17/Mar/2021:08:56:26 +0000] "PUT /lock/add/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=0&i2=0&i3=0&i4=0&i5=0&i6=0&i7=0&i8=0&i9=0&n1=0&n2=0&n3=0&o1=0&o2=0&o3=0&e=0 HTTP/1.1" 200 120
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2bd527a (handleDoor controller errors fixed)
+>>>>>>> 3932397
 ::1 - - [18/Mar/2021:05:48:34 +0000] "PUT /door/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=0&n3=0&o1=0&o2=0&o3=0&e=0 HTTP/1.1" 200 120
 ::1 - - [18/Mar/2021:05:48:43 +0000] "PUT /door/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=0&n3=0&o1=1&o2=0&o3=0&e=0 HTTP/1.1" 500 29
 ::1 - - [18/Mar/2021:05:49:00 +0000] "PUT /door/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=0&n3=0&o1=1&o2=0&o3=0&e=0 HTTP/1.1" 500 29
@@ -492,6 +506,13 @@
 ::1 - - [18/Mar/2021:06:03:07 +0000] "PUT /door/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=0&n3=0&o1=0&o2=0&o3=0&e=0 HTTP/1.1" 200 112
 ::1 - - [18/Mar/2021:06:03:15 +0000] "PUT /door/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=1&n3=0&o1=1&o2=0&o3=0&e=0 HTTP/1.1" 200 2
 ::1 - - [18/Mar/2021:06:04:27 +0000] "PUT /door/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=1&n3=0&o1=1&o2=0&o3=0&e=0 HTTP/1.1" 200 112
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6cda7ff (controller errors fixed)
+>>>>>>> 3932397
 ::1 - - [19/Mar/2021:07:25:31 +0000] "PUT /door/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=1&n3=0&o1=0&o2=0&o3=0&e=0 HTTP/1.1" 500 28
 ::1 - - [19/Mar/2021:07:27:27 +0000] "PUT /door/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=1&n3=0&o1=0&o2=0&o3=0&e=0 HTTP/1.1" 200 112
 ::1 - - [19/Mar/2021:07:28:11 +0000] "PUT /door/?h=A3%25nm*Wb&id=Lg18299RHS10MxSh&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=0&n3=0&o1=0&o2=0&o3=0&e=0 HTTP/1.1" 200 112
@@ -523,6 +544,11 @@
 ::1 - - [19/Mar/2021:07:54:04 +0000] "PUT /door/?h=A3%25nm*Wb&id=6051c43a1d0bc916b8b9c672&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=1&n3=0&o1=1&o2=1&o3=0&e=0 HTTP/1.1" 200 112
 ::1 - - [19/Mar/2021:07:54:14 +0000] "PUT /door/?h=A3%25nm*Wb&id=6051c43a1d0bc916b8b9c672&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=1&n3=0&o1=1&o2=0&o3=0&e=0 HTTP/1.1" 200 112
 ::1 - - [19/Mar/2021:07:55:50 +0000] "PUT /lock/add/?h=A3%25nm*Wb&id=Lg18299RHS10MxShFFFFFFFF&i1=0&i2=0&i3=0&i4=0&i5=0&i6=0&i7=0&i8=0&i9=0&n1=0&n2=0&n3=0&o1=0&o2=0&o3=0&e=0 HTTP/1.1" 200 120
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 3932397
 ::1 - - [23/Mar/2021:09:01:05 +0000] "GET /allLocks/?h=A3%25nm*Wb HTTP/1.1" 200 273621
 ::1 - - [23/Mar/2021:09:02:53 +0000] "GET /allLocks/?h=A3%25nm*Wb HTTP/1.1" 200 22905
 ::1 - - [23/Mar/2021:09:47:13 +0000] "GET /allLocks/?h=A3%25nm*Wb HTTP/1.1" 200 105355
@@ -652,3 +678,21 @@
 ::1 - - [23/Mar/2021:12:23:07 +0000] "PUT /door/?h=A3%25nm*Wb&id=6059d4a46dce3c32a41013a5&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=1&n3=0&o1=1&o2=1&o3=0&e=0 HTTP/1.1" 200 112
 ::1 - - [23/Mar/2021:12:23:22 +0000] "PUT /door/?h=A3%25nm*Wb&id=6059d4a46dce3c32a41013a5&i1=1&i2=1&i3=1&i4=1&i5=1&i6=1&i7=1&i8=1&i9=1&n1=0&n2=1&n3=0&o1=1&o2=0&o3=0&e=0 HTTP/1.1" 200 112
 ::ffff:127.0.0.1 - - [23/Mar/2021:12:29:42 +0000] "GET /allLocks/?h=A3%nm*Wb HTTP/1.1" 200 433
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> a4143a5 (algorithm updates front to back)
+=======
+>>>>>>> 097b98d (updated lockModel and  controllers folder structure and created new controller addLock)
+=======
+>>>>>>> 2bd527a (handleDoor controller errors fixed)
+=======
+>>>>>>> 6cda7ff (controller errors fixed)
+=======
+::1 - - [23/Mar/2021:09:01:05 +0000] "GET /allLocks/?h=A3%25nm*Wb HTTP/1.1" 200 273621
+::1 - - [23/Mar/2021:09:02:53 +0000] "GET /allLocks/?h=A3%25nm*Wb HTTP/1.1" 200 22905
+>>>>>>> 346a3f3 (new controller getAllLocks created)
+=======
+>>>>>>> 991278a (controllers and actions to get all locks and delete a lock. open and reset updated)
+>>>>>>> 3932397
