@@ -333,6 +333,9 @@ function Flats() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 00bce46
                   <button className={classes.arrowLeft}>
                     <img src={arrowLeft} alt="arrowRight" />
                   </button>
@@ -344,6 +347,7 @@ function Flats() {
                   <button className={classes.arrowRight}>
                     <img src={arrowRight} alt="arrowRight" />
                   </button>
+<<<<<<< HEAD
 =======
 >>>>>>> e97978a (Combine 12 coomits test)
 =======
@@ -352,6 +356,8 @@ function Flats() {
 >>>>>>> 3fef4a6 (Combine commits test rebase)
 =======
 >>>>>>> e8be8ec
+=======
+>>>>>>> 00bce46
                 </div>
                 <div className={classes.rightSide}>
                   <div className={classes.top}>

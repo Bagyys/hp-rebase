@@ -23,6 +23,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "react-addons-update": "^15.6.3",
 =======
 >>>>>>> e97978a (Combine 12 coomits test)
@@ -32,6 +33,9 @@
 >>>>>>> 3fef4a6 (Combine commits test rebase)
 =======
 >>>>>>> e8be8ec
+=======
+    "react-addons-update": "^15.6.3",
+>>>>>>> 00bce46
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0",
     "react-modal": "^3.12.1",
@@ -75,6 +79,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@types/react-addons-update": "^0.14.20",
 =======
 >>>>>>> e97978a (Combine 12 coomits test)
@@ -84,6 +89,9 @@
 >>>>>>> 3fef4a6 (Combine commits test rebase)
 =======
 >>>>>>> e8be8ec
+=======
+    "@types/react-addons-update": "^0.14.20",
+>>>>>>> 00bce46
     "@types/react-modal": "^3.12.0",
     "@types/react-redux": "^7.1.12",
     "@types/react-router-dom": "^5.1.6",
