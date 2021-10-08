@@ -12,6 +12,10 @@ exports.addLock = async (req, res) => {
   if (!data.h || data.h !== "A3%nm*Wb") {
     return res.status(404).send("netu metki");
   }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 346a3f3 (new controller getAllLocks created)
   if (
     data.id === undefined ||
     data.id.length !== 24 ||
@@ -21,6 +25,7 @@ exports.addLock = async (req, res) => {
     console.log("send error");
     return res.status(404).send("plochije parametrof");
   }
+<<<<<<< HEAD
   try {
     const emptyTimeStampArrays = { o1: [], o2: [] };
     const lockObject = {
@@ -44,6 +49,39 @@ exports.addLock = async (req, res) => {
 
     const createdLock = new Lock(lockObject);
     newLock = await createdLock.save();
+=======
+=======
+>>>>>>> 346a3f3 (new controller getAllLocks created)
+  try {
+    const emptyTimeStampArrays = { o1: [], o2: [] };
+    const lockObject = {
+      timeInterval: data.t,
+      i1: data.i1,
+      i2: data.i2,
+      i3: data.i3,
+      i4: data.i4,
+      i5: data.i5,
+      i6: data.i6,
+      i7: data.i7,
+      i8: data.i8,
+      i9: data.i9,
+      o1: data.o1,
+      o2: data.o2,
+      o3: data.o3,
+      e: data.e,
+      lockOpened: emptyTimeStampArrays,
+      lockClosed: emptyTimeStampArrays,
+    };
+
+<<<<<<< HEAD
+      const createdLock = new Lock(lockObject);
+      newLock = await createdLock.save();
+    }
+>>>>>>> 097b98d (updated lockModel and  controllers folder structure and created new controller addLock)
+=======
+    const createdLock = new Lock(lockObject);
+    newLock = await createdLock.save();
+>>>>>>> 346a3f3 (new controller getAllLocks created)
     if (newLock !== undefined || newLock !== null) {
       const {
         _id,

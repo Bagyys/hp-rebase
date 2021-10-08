@@ -1,11 +1,24 @@
 const { Lock } = require("../../../models/lockModel");
 // let debug = require("debug");
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 exports.reset = async (lockId, n1, n3, error) => {
   // updatedLock = await Lock.findOneAndUpdate(
   updatedLock = await Lock.findByIdAndUpdate(
     // { lockId: data.id },
     lockId,
+<<<<<<< HEAD
+=======
+exports.reset = async (lockId, n1, n3) => {
+=======
+exports.reset = async (lockId, n1, n3, error) => {
+>>>>>>> 2bd527a (handleDoor controller errors fixed)
+  const updatedLock = await Lock.findOneAndUpdate(
+    { lockId: lockId },
+>>>>>>> 097b98d (updated lockModel and  controllers folder structure and created new controller addLock)
+=======
+>>>>>>> 6cda7ff (controller errors fixed)
     {
       $set: {
         // i1: data.i1,
@@ -20,12 +33,24 @@ exports.reset = async (lockId, n1, n3, error) => {
         o1: 0,
         o2: 0,
         o3: 0,
+<<<<<<< HEAD
+<<<<<<< HEAD
         e: error,
       },
       $push: {
         [`lockClosed.o1`]: { time: new Date(), user: "system reset" },
         [`lockClosed.o2`]: { time: new Date(), user: "system reset" },
       },
+<<<<<<< HEAD
+=======
+=======
+        e: error,
+>>>>>>> 2bd527a (handleDoor controller errors fixed)
+      },
+      $push: { [`closed.o1`]: new Date(), [`closed.o2`]: new Date() },
+>>>>>>> 097b98d (updated lockModel and  controllers folder structure and created new controller addLock)
+=======
+>>>>>>> 650741c (minor fixes)
     },
     { new: true }
   );
@@ -43,7 +68,15 @@ exports.reset = async (lockId, n1, n3, error) => {
     o1,
     o2,
     o3,
+<<<<<<< HEAD
+<<<<<<< HEAD
     timeInterval: t,
+=======
+    interval: t,
+>>>>>>> 097b98d (updated lockModel and  controllers folder structure and created new controller addLock)
+=======
+    timeInterval: t,
+>>>>>>> 2bd527a (handleDoor controller errors fixed)
     e,
   } = updatedLock;
   const n2 = 0;
