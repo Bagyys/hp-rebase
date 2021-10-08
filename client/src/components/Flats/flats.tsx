@@ -329,6 +329,7 @@ function Flats() {
               <div className={classes.flatContent}>
                 <div className={classes.flatImg}>
                   <Slider slides={flat.images} />
+<<<<<<< HEAD
                   <button className={classes.arrowLeft}>
                     <img src={arrowLeft} alt="arrowRight" />
                   </button>
@@ -340,6 +341,8 @@ function Flats() {
                   <button className={classes.arrowRight}>
                     <img src={arrowRight} alt="arrowRight" />
                   </button>
+=======
+>>>>>>> e97978a (Combine 12 coomits test)
                 </div>
                 <div className={classes.rightSide}>
                   <div className={classes.top}>

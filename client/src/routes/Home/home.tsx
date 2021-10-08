@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -8,6 +9,12 @@ import Lock from "../../containers/Lock/Lock";
 import { getAllLocksAction } from "../../store/actions/lockActions";
 import { LockProps } from "../../store/reducers/lockReducer";
 
+=======
+import { useDispatch } from "react-redux";
+import { getDoorQuery, resetDoor } from "../../store/actions/doorsActions";
+import Flats from "../../components/Flats/flats";
+import Map from "../../components/Map/map";
+>>>>>>> e97978a (Combine 12 coomits test)
 import classes from "../../App.module.scss";
 import Filter from "../../components/Filter/filter";
 function Home() {
@@ -19,6 +26,7 @@ function Home() {
     (state: StoreState) => state.lock.locks
   );
 
+<<<<<<< HEAD
   useEffect(() => {}, [locks]);
   let lockComps = null;
   if (locks !== undefined && locks !== null) {
@@ -28,6 +36,15 @@ function Home() {
   } else {
     lockComps = <></>;
   }
+=======
+  const testAction = (arg: string) => {
+    dispatch(getDoorQuery(arg));
+  };
+  const resetAction = () => {
+    dispatch(resetDoor());
+  };
+
+>>>>>>> e97978a (Combine 12 coomits test)
   return (
     <div className={classes.App}>
       <Filter />
