@@ -332,6 +332,7 @@ function Flats() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <button className={classes.arrowLeft}>
                     <img src={arrowLeft} alt="arrowRight" />
                   </button>
@@ -349,6 +350,8 @@ function Flats() {
 >>>>>>> ffe388c (Combine with reset soft test)
 =======
 >>>>>>> 3fef4a6 (Combine commits test rebase)
+=======
+>>>>>>> e8be8ec
                 </div>
                 <div className={classes.rightSide}>
                   <div className={classes.top}>
